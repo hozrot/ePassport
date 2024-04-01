@@ -30,11 +30,11 @@ function HomePage({ navigation }) {
           <Text style={styles.menuText}> Fees Details </Text>
         </TouchableOpacity> */}
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.menuText}>Log IN </Text>
+          <Text style={styles.menuText}>Log in </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text style={styles.menuText}>Sing Up</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         <TouchableOpacity>
           <Text style={styles.menuText}> Check Status </Text>
         </TouchableOpacity>
@@ -389,7 +389,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F7F7F7",
     height: 50,
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     alignItems: "center",
     padding: 20,
   },
