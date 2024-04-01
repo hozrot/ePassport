@@ -1,29 +1,23 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Text, DatePickerIOS } from "react-native";
+import { View, StyleSheet, Text, DatePickerIOS, ScrollView, Modal, TouchableOpacity } from "react-native";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import TextInput from "../component/TextInput";
 //const [chosenDate, setChosenDate] = useState(new Date());
+import Button from "../component/Button";
 
-//npx expo install @react-native-community/datetimepicker
+function ApplicationPage({ navigation }) {
+    const [open, setOpen] = useState(false)
 
-import DateTimePickerModal from "react-native-modal-datetime-picker";
-//npx expo install react-native-modal-datetime-picker @react-native-community/datetimepicker
-import DateTimePicker from "@react-native-community/datetimepicker";
-//npm install @react-native-community/datetimepicker --save
-function ApplicationPage(props) {
+    function hanldeOnPress() {
+        setOpen(!open);
+    }
     return (
-        <View>
+        <ScrollView>
             <Header />
-            <View
-                style={{
-                    flex: 1,
-                    backgroundColor: "#fff",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: 20,
-                    marginBottom: 50,
-                }}
+            <View style={{
+                flex: 1, backgroundColor: "#fff", alignItems: "center", justifyContent: "space-between",
+            }}
             >
                 <Text
                     style={{
@@ -35,6 +29,20 @@ function ApplicationPage(props) {
                 >
                     Please fill in all required information step by step in each section
                 </Text>
+                <View style={{ padding: 32, width: "25%",  }} >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                        Date of Birth:
+                    </Text>
+                    <TextInput
+                        icon="calendar"
+                        placeholder="Enter your DoB in dd/mm/yyyy format "
+                        returnKeyType="next"
+                    />
+                    <Text style={{ padding: 10, color: 'red' }} >
+                        # If age is less than 2 years , A 3R size photo need to submit during enrolment
+                    </Text>
+                </View>
+                <View style={{ flexDirection:'row', justifyContent:'center',alignItems:'center' }} >
                 <View
                     style={{
                         padding: 32,
@@ -43,18 +51,6 @@ function ApplicationPage(props) {
 
                     }}
                 >
-                    <Text style={{ fontWeight: "bold", padding: 10, }} >
-                        Date of Birth:
-                    </Text>
-                    <TextInput
-                        icon="calendar"
-                        placeholder="Enter your Date of Birth "
-                        returnKeyType="next"
-                    />
-                    <Text style={{ padding: 10, color: 'red' }} >
-                        # If age is less than 2 years , A 3R size photo need to submit during enrolment
-                    </Text>
-
                     <Text style={{ fontWeight: "bold", padding: 10, }} >
                         NID no:
                     </Text>
@@ -66,6 +62,15 @@ function ApplicationPage(props) {
                     <Text style={{ padding: 10, color: 'red' }} >
                         # If age is greater than 18 Years you must have to give NID information {'\n'}
                     </Text>
+                </View>
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "25%",
+
+                    }}
+                >
                     <Text style={{ fontWeight: "bold", padding: 10, }} >
                         Birth Reg. No. :
                     </Text>
@@ -76,15 +81,119 @@ function ApplicationPage(props) {
                     />
                     <Text style={{ padding: 10, color: 'red' }} >
 
-                        # If age is less than 18 Years you can give only BRC no.
+                        # If age is less or equal  than 18 Years you can give only BRC no.
                     </Text>
-                    {/* <DatePickerIOS date={chosenDate} onDateChange={setChosenDate} /> */}
-                    {/* <RNDateTimePicker mode="time" /> */}
+                   
+                    
                 </View>
+               
+                </View>
+                <View style={{ flexDirection:'row', justifyContent:'center',alignItems:'center' }} >
+                <View
+                     style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
+
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                       First Name 
+                    </Text>
+                    <TextInput
+                        icon="document"
+                        placeholder="Enter your First Name  "
+                        returnKeyType="next"
+                    />
+                
+                </View>
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
+
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                       Last Name 
+                    </Text>
+                    <TextInput
+                        icon="news"
+                        placeholder="Enter your Last Name"
+                        returnKeyType="next"
+                    />
+                        
+                </View>
+               
+                </View>
+                <View style={{ flexDirection:'row', justifyContent:'center',alignItems:'center' }} >
+                <View
+                     style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
+
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                       Father's  Name 
+                    </Text>
+                    <TextInput
+                        icon="document"
+                        placeholder="Enter your Father's Name  "
+                        returnKeyType="next"
+                    />
+                
+                </View>
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
+
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                    Mother's Name 
+                    </Text>
+                    <TextInput
+                        icon="news"
+                        placeholder="Enter your Mother's Name"
+                        returnKeyType="next"
+                    />
+                        
+                </View>
+               
+                </View>
+                
+               
+                <TouchableOpacity onPress={hanldeOnPress}>
+                        <Text>Open </Text>
+                    </TouchableOpacity>
+                    <Modal animationType='slide'
+                        transparent={true}
+                        visible={open}>
+
+
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                            <View style={{ alignItems: 'center', backgroundColor: 'yellow', width: '40%', height: '50%', elevation: .5 }}> <Text> This a Modal data </Text>
+                                <TouchableOpacity onPress={hanldeOnPress}>
+                                    <Text>Close </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                    </Modal>
+
+                    <Button
+                        label="Next"
+                        onPress={() => navigation.navigate("Application")}
+                    />
+
             </View>
 
             <Footer />
-        </View>
+        </ScrollView>
     );
 }
 const styles = StyleSheet.create({});
