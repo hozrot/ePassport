@@ -14,11 +14,11 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
-function LogIn({ navigation }) {
+function SpouseInfo({ navigation }) {
   return (
     <ScrollView>
       <Header />
-      <Banner />
+    
       <View
         style={{
           flex: 1,
@@ -37,7 +37,7 @@ function LogIn({ navigation }) {
             fontWeight: "bold",
           }}
         >
-          Log in to Online Registration Portal
+        Spouse Info
         </Text>
         <View
           style={{
@@ -73,8 +73,8 @@ function LogIn({ navigation }) {
           />
         </View>
         <Button
-          label="Login"
-          onPress={() => navigation.navigate("PassportType")}
+          label="Save and Continue"
+          onPress={() => navigation.navigate("EmergencyContact")}
         />
         <Text>
           If you don't have an account please create one{" "}
@@ -115,4 +115,4 @@ const styles = StyleSheet.create({
     backgroundColor: "gray",
   },
 });
-export default LogIn;
+export default SpouseInfo;

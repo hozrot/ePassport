@@ -14,11 +14,11 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
-function LogIn({ navigation }) {
+function DelevaryOption({ navigation }) {
   return (
     <ScrollView>
       <Header />
-      <Banner />
+     
       <View
         style={{
           flex: 1,
@@ -37,7 +37,7 @@ function LogIn({ navigation }) {
             fontWeight: "bold",
           }}
         >
-          Log in to Online Registration Portal
+         Delevary Option
         </Text>
         <View
           style={{
@@ -73,31 +73,10 @@ function LogIn({ navigation }) {
           />
         </View>
         <Button
-          label="Login"
-          onPress={() => navigation.navigate("PassportType")}
+          label="Save and Continue"
+          onPress={() => navigation.navigate("ApplicationSummary")}
         />
-        <Text>
-          If you don't have an account please create one{" "}
-          <TouchableOpacity
-            style={{ color: "blue" }}
-            onPress={() => navigation.navigate("Register")}
-          >
-            {" "}
-            Sign up now...
-          </TouchableOpacity>{" "}
-        </Text>
-
-        {/* <View style={styles.Container}>
-        <View style={styles.LogIN}>
-          <Text> Log in to Online Registration Portal</Text>
-          <TextInput placeholder="Enter Email " />
-
-          <TextInput placeholder="Enter Password" />
-          <Button
-            type="submit"
-            title="Login"
-            onPress={() => navigation.navigate("Register")}
-          /> */}
+      
       </View>
       <Footer />
     </ScrollView>
@@ -115,4 +94,4 @@ const styles = StyleSheet.create({
     backgroundColor: "gray",
   },
 });
-export default LogIn;
+export default DelevaryOption;
