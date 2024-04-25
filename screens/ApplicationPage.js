@@ -29,7 +29,7 @@ function ApplicationPage({ navigation }) {
                 >
                     Please fill in all required information step by step in each section
                 </Text>
-                <View style={{ padding: 32, width: "25%", }} >
+                <View style={{ padding: 32, width: "25%",  }} >
                     <Text style={{ fontWeight: "bold", padding: 10, }} >
                         Date of Birth:
                     </Text>
@@ -42,153 +42,153 @@ function ApplicationPage({ navigation }) {
                         # If age is less than 2 years , A 3R size photo need to submit during enrolment
                     </Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
-                    <View
-                        style={{
-                            padding: 32,
-                            marginBottom: 16,
-                            width: "25%",
+                <View style={{ flexDirection:'row', justifyContent:'center',alignItems:'center' }} >
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "25%",
 
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", padding: 10, }} >
-                            NID no:
-                        </Text>
-                        <TextInput
-                            icon="document"
-                            placeholder="Enter your NID No. "
-                            returnKeyType="next"
-                        />
-                        <Text style={{ padding: 10, color: 'red' }} >
-                            # If age is greater than 18 Years you must have to give NID information {'\n'}
-                        </Text>
-                    </View>
-                    <View
-                        style={{
-                            padding: 32,
-                            marginBottom: 16,
-                            width: "25%",
-
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", padding: 10, }} >
-                            Birth Reg. No. :
-                        </Text>
-                        <TextInput
-                            icon="news"
-                            placeholder="Enter your BRC No."
-                            returnKeyType="next"
-                        />
-                        <Text style={{ padding: 10, color: 'red' }} >
-
-                            # If age is less or equal  than 18 Years you can give only BRC no.
-                        </Text>
-
-
-                    </View>
-
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                        NID no:
+                    </Text>
+                    <TextInput
+                        icon="document"
+                        placeholder="Enter your NID No. "
+                        returnKeyType="next"
+                    />
+                    <Text style={{ padding: 10, color: 'red' }} >
+                        # If age is greater than 18 Years you must have to give NID information {'\n'}
+                    </Text>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
-                    <View
-                        style={{
-                            padding: 32,
-                            marginBottom: 16,
-                            width: "50%",
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "25%",
 
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", padding: 10, }} >
-                            First Name
-                        </Text>
-                        <TextInput
-                            icon="document"
-                            placeholder="Enter your First Name  "
-                            returnKeyType="next"
-                        />
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                        Birth Reg. No. :
+                    </Text>
+                    <TextInput
+                        icon="news"
+                        placeholder="Enter your BRC No."
+                        returnKeyType="next"
+                    />
+                    <Text style={{ padding: 10, color: 'red' }} >
 
-                    </View>
-                    <View
-                        style={{
-                            padding: 32,
-                            marginBottom: 16,
-                            width: "50%",
-
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", padding: 10, }} >
-                            Last Name
-                        </Text>
-                        <TextInput
-                            icon="news"
-                            placeholder="Enter your Last Name"
-                            returnKeyType="next"
-                        />
-
-                    </View>
-
+                        # If age is less or equal  than 18 Years you can give only BRC no.
+                    </Text>
+                   
+                    
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }} >
-                    <View
-                        style={{
-                            padding: 32,
-                            marginBottom: 16,
-                            width: "50%",
-
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", padding: 10, }} >
-                            Father's  Name
-                        </Text>
-                        <TextInput
-                            icon="document"
-                            placeholder="Enter your Father's Name  "
-                            returnKeyType="next"
-                        />
-
-                    </View>
-                    <View
-                        style={{
-                            padding: 32,
-                            marginBottom: 16,
-                            width: "50%",
-
-                        }}
-                    >
-                        <Text style={{ fontWeight: "bold", padding: 10, }} >
-                            Mother's Name
-                        </Text>
-                        <TextInput
-                            icon="news"
-                            placeholder="Enter your Mother's Name"
-                            returnKeyType="next"
-                        />
-
-                    </View>
-
+               
                 </View>
+                <View style={{ flexDirection:'row', justifyContent:'center',alignItems:'center' }} >
+                <View
+                     style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
 
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                       First Name 
+                    </Text>
+                    <TextInput
+                        icon="document"
+                        placeholder="Enter your First Name  "
+                        returnKeyType="next"
+                    />
+                
+                </View>
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
 
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                       Last Name 
+                    </Text>
+                    <TextInput
+                        icon="news"
+                        placeholder="Enter your Last Name"
+                        returnKeyType="next"
+                    />
+                        
+                </View>
+               
+                </View>
+                <View style={{ flexDirection:'row', justifyContent:'center',alignItems:'center' }} >
+                <View
+                     style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
+
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                       Father's  Name 
+                    </Text>
+                    <TextInput
+                        icon="document"
+                        placeholder="Enter your Father's Name  "
+                        returnKeyType="next"
+                    />
+                
+                </View>
+                <View
+                    style={{
+                        padding: 32,
+                        marginBottom: 16,
+                        width: "50%",
+
+                    }}
+                >
+                    <Text style={{ fontWeight: "bold", padding: 10, }} >
+                    Mother's Name 
+                    </Text>
+                    <TextInput
+                        icon="news"
+                        placeholder="Enter your Mother's Name"
+                        returnKeyType="next"
+                    />
+                        
+                </View>
+               
+                </View>
+                
+               
                 <TouchableOpacity onPress={hanldeOnPress}>
-                    <Text>Open </Text>
-                </TouchableOpacity>
-                <Modal animationType='slide'
-                    transparent={true}
-                    visible={open}>
+                        <Text>Open </Text>
+                    </TouchableOpacity>
+                    <Modal animationType='slide'
+                        transparent={true}
+                        visible={open}>
 
 
-                    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
-                        <View style={{ alignItems: 'center', backgroundColor: 'yellow', width: '40%', height: '50%', elevation: .5 }}> <Text> This a Modal data </Text>
-                            <TouchableOpacity onPress={hanldeOnPress}>
-                                <Text>Close </Text>
-                            </TouchableOpacity>
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                            <View style={{ alignItems: 'center', backgroundColor: 'yellow', width: '40%', height: '50%', elevation: .5 }}> <Text> This a Modal data </Text>
+                                <TouchableOpacity onPress={hanldeOnPress}>
+                                    <Text>Close </Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
-                </Modal>
+                    </Modal>
 
-                <Button
-                    label="Next"
-                    onPress={() => navigation.navigate("Application")}
-                />
+                    <Button
+                        label="Next"
+                        onPress={() => navigation.navigate("Application")}
+                    />
 
             </View>
 

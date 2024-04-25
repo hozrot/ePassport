@@ -1,4 +1,5 @@
-import React from "react";
+import React,{ useMemo, useState } from "react";
+import RadioGroup from 'react-native-radio-buttons-group';
 import {
   View,
   StyleSheet,
@@ -14,9 +15,27 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
-import { RadioButton } from "react-native-ui-lib";
+//import { RadioButton } from "react-native-ui-lib";
+
+
+
 
 export default function PassportType({ navigation }) {
+  const radioButtons = useMemo(() => ([
+    {
+        id: '1', // acts as primary key, should be unique and non-empty string
+        label: 'Ordinary',
+        value: 'ordinary'
+    },
+    {
+        id: '2',
+        label: 'Official',
+        value: 'official'
+    }
+  ]), []);
+  
+  const [selectedId, setSelectedId] = useState();
+  
   return (
     <ScrollView>
       <Header />
@@ -41,30 +60,27 @@ export default function PassportType({ navigation }) {
         >
           Select Passport Type here
         </Text>
-        <View>
-          <RadioButton value={1} label={'Ordinary'} />
-          <Text>    </Text>
-          <RadioButton value={2} label={'Official'} />
+        <View  style={{
+           justifyContent:'center',
+           alignItems:'center'
+          }}>
 
+          <RadioGroup 
+            radioButtons={radioButtons} 
+            onPress={setSelectedId}
+            selectedId={selectedId}
+            layout="row"
+        />
+         {selectedId == 1  && <Text> Provide NOC/ Student Id / Tread Licence According to your profession  </Text>}
+        {selectedId == 2  && <Text> Provide NOC or GO </Text>}
+   
+         
         </View>
-       
+     
         <Button
           label="Save and Continue"
           onPress={() => navigation.navigate("PersonalInfo")}
         />
-
-
-        {/* <View style={styles.Container}>
-      <View style={styles.LogIN}>
-        <Text> Log in to Online Registration Portal</Text>
-        <TextInput placeholder="Enter Email " />
-
-        <TextInput placeholder="Enter Password" />
-        <Button
-          type="submit"
-          title="Login"
-          onPress={() => navigation.navigate("Register")}
-        /> */}
       </View>
       <Footer />
     </ScrollView>

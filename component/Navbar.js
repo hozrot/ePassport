@@ -21,7 +21,7 @@ function Navbar({ navigation }) {
           <Text style={styles.menuText}> Fees Details </Text>
         </TouchableOpacity> */}
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.menuText}>Log IN </Text>
+          <Text style={styles.menuText}> Sign in  </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text style={styles.menuText}>Sing Up</Text>
