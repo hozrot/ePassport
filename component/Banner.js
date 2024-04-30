@@ -6,7 +6,7 @@ function Banner(props) {
     <View style={styles.Banner}>
       <Image
         style={styles.bannerPic}
-        source={require("../assets/passportbanner.png")}
+        source={require("../assets/epassport.jpeg")}
       />
       <Text style={styles.BannerText}>
         {" "}
@@ -17,19 +17,18 @@ function Banner(props) {
 }
 const styles = StyleSheet.create({
   bannerPic: {
-    width: "100%",
-    height: 400,
+    
   },
 
   BannerText: {
     color: "#000000",
     fontWeight: "bold",
-    fontSize: 40,
-    margin: -80,
-    paddingLeft: 80,
+    fontSize: 30,
+    margin: -200,
+    paddingLeft: 820,
   },
   Banner: {
-    height: 400,
+   height:250,
     backgroundColor: "aliceblue",
   },
 });

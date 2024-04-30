@@ -19,33 +19,41 @@ function HomePage({ navigation }) {
   return (
     <ScrollView style={styles.Container}>
       <Header />
+      <Banner />
       <View style={styles.MenuBar}>
         <TouchableOpacity>
           <Text style={styles.menuText}>Home </Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.menuText}>Apply Online  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}>5 Step to e-Pasport  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}> Urgent Application   </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
           <Text style={styles.menuText}>Instructions </Text>
         </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={styles.menuText}> Fees Details </Text>
-        </TouchableOpacity> */}
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.menuText}>Log in </Text>
+          <Text style={styles.menuText}> Passport Fees  </Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.menuText}>Sign in </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text style={styles.menuText}>Sing Up</Text>
         </TouchableOpacity> */}
         <TouchableOpacity>
           <Text style={styles.menuText}> Check Status </Text>
         </TouchableOpacity>
-        {/* <TouchableOpacity>
-          <Text style={styles.menuText}>Sign in </Text>
-        </TouchableOpacity>
         <TouchableOpacity>
-          <Text style={styles.menuText}>Sign up </Text>
-        </TouchableOpacity> */}
+          <Text style={styles.menuText}>Contact </Text>
+        </TouchableOpacity>
+       
       </View>
-      <Banner />
+      
       <View
         style={{ justifyContent: "center", alignItems: "center", height: 200 }}
       >

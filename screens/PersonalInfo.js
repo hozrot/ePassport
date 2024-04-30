@@ -12,7 +12,7 @@ import Footer from "../component/Footer";
 import Banner from "../component/Banner";
 import DatePicker from 'react-native-date-picker';
 import RNDateTimePicker from 'react-native-ui-lib';
-import { IndexPath, Layout, Select, SelectItem,Datepicker } from '@ui-kitten/components';
+import { IndexPath, Layout, Select, SelectItem, Datepicker } from '@ui-kitten/components';
 import { Dropdown } from 'react-native-element-dropdown';
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
@@ -26,22 +26,30 @@ const job = [
 
 ];
 const gender = [
-  { label: 'Male', value: '1' },
-  { label: 'Female', value: '2' },
-  { label: 'Other', value: '3' },
- 
+  { gender: 'Male', value2: '1' },
+  { gender: 'Female', value2: '2' },
+  { gender: 'Other', value2: '3' },
+
+
+];
+const religion = [
+  { religion: 'Islam', value3: '1' },
+  { religion: 'Hindu', value3: '2' },
+  { religion: 'Buddha', value3: '3' },
+
 
 ];
 
 
-  
 
 export default function PersonalInfo({ navigation }) {
   const [date, setDate] = useState(new Date());
   const [value, setValue] = useState(null);
   const [value2, setValue2] = useState(null);
+  const [value3, setValue3] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [isFocus2, setIsFocus2] = useState(false);
+  const [isFocus3, setIsFocus3] = useState(false);
 
   const renderLabel = () => {
     if (value || isFocus) {
@@ -55,163 +63,479 @@ export default function PersonalInfo({ navigation }) {
   };
   return (
     <ScrollView>
-    <Header />
-   
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 20,
-        marginBottom: 50,
-      }}
-    >
-      <Text
-        style={{
+      <Header />
+      <View style={styles.MenuBar}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <Text style={styles.menuText}>Home </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.menuText}>Apply Online  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}>5 Step to e-Pasport  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}> Urgent Application   </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}>Instructions </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}> Passport Fees  </Text>
+        </TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+          <Text style={styles.menuText}>Sign in </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+          <Text style={styles.menuText}>Sing Up</Text>
+        </TouchableOpacity> */}
+        <TouchableOpacity>
+          <Text style={styles.menuText}> Check Status </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.menuText}>Contact </Text>
+        </TouchableOpacity>
+
+      </View>
+      <View style={{
+        paddingLeft: 200
+      }}>
+        <Text style={{
           color: "#223e4b",
           fontSize: 30,
           marginBottom: 16,
           fontWeight: "bold",
-        }}
-      >
-       Personal  Info
-      </Text>
+        }}> Please fill in all required information step by step </Text>
+      </View>
       <View style={{
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        
-        flexDirection:'column',
-        bottom:10
-      }} >
-        {/* <Dropdown
-          style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
-          placeholderStyle={styles.placeholderStyle}
-          selectedTextStyle={styles.selectedTextStyle}
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={gender}
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocus2 ? 'Select your Gender' : '...'}
-          value={value}
-          onFocus={() => setIsFocus2(true)}
-          onBlur={() => setIsFocus2(false)}
-          onChange={item => {
-            setValue(item.value);
-            setIsFocus2(false);
-          }}
-            /> */}
-       <TextInput
-            
-            placeholder="Enter your Given Name"
-            autoCapitalize="none"
-            autoCompleteType="name"
-            keyboardType="text"
-            keyboardAppearance="dark"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-           <TextInput
-            
-            placeholder="Enter your Sur  Name"
-            autoCapitalize="none"
-            autoCompleteType="name"
-            keyboardType="text"
-            keyboardAppearance="dark"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-           <TextInput
-            
-            placeholder="Enter your Full  Name"
-            autoCapitalize="none"
-            autoCompleteType="name"
-            keyboardType="text"
-            keyboardAppearance="dark"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-        <Dropdown
-          style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-          placeholderStyle={styles.placeholderStyle}
-          selectedTextStyle={styles.selectedTextStyle}
-          inputSearchStyle={styles.inputSearchStyle}
-          iconStyle={styles.iconStyle}
-          data={job}
-          labelField="label"
-          valueField="value"
-          placeholder={!isFocus ? 'Select your current Profession' : '...'}
-          value={value}
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          onChange={item => {
-            setValue(item.value);
-            setIsFocus(false);
-          }}
-            />
-            
-             </View>
-             {value == 1  && <Text>Need to provide Government NOC while Enrollment  </Text>}
-             {value == 2  && <Text>Need to provide Official  NOC while Enrollment  </Text>}
-             {value == 3  && <Text>Need to provide Tread Licence while Enrollment  </Text>}
-             {value == 4  && <Text>Need to provide Student ID  while Enrollment  </Text>}
-      <Button
-        label="Save and Continue"
-        onPress={() => navigation.navigate("AddressInfo")}
-      />
-     
+        justifyContent: "space-between",
+        flexDirection: "row",
+        paddingLeft: 200
+      }}>
 
-    </View>
-    <Footer />
-  </ScrollView>
+
+        <View style={{
+          width: "20%",
+          flexDirection: 'column',
+          paddingLeft: 50
+
+        }}>
+          <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
+            <Text style={styles.sidemenu}>Passport Type </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{
+            backgroundColor: 'gray',
+          }} onPress={() => navigation.navigate("PersonalInfo")}>
+            <Text style={styles.sidemenu}>Parsonal Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Address </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>ID Document  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Parental Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Spouse Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Emergency Contact  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Passport Option </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Delivary Option and Appionment  </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{
+          width: "80%",
+          paddingBottom:10
+        }}>
+          <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+            Personal Information
+          </Text>
+          <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            paddingLeft: 10,
+            padding:20
+          }}>Note: If you have any confusion about "Given anme" and "Surname" Please click here for example</Text>
+          <View>
+           
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            padding:10
+          }} > Select Gender </Text>
+           <View style={{
+            width:"40%",
+            flexDirection:'row',
+            padding:10
+          }} > 
+
+           <View>  <Dropdown
+              style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={gender}
+              labelField="gender"
+              valueField="value2"
+              placeholder={!isFocus2 ? 'Select your Gender' : '...'}
+              value={value2}
+              onFocus={() => setIsFocus2(true)}
+              onBlur={() => setIsFocus2(false)}
+              onChange={item => {
+                setValue2(item.value2);
+                setIsFocus2(false);
+              }}
+            /> </View>
+           <View>  {value2 == 3 && <Text style={{
+              color: "#223e4b",
+              padding: 20,
+              marginBottom: 16,
+              fontWeight: "bold",
+            }}>Need to provide Certification Of Other Gender   </Text>} </View>
+
+           </View>
+           
+          
+
+           
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Full Name  </Text>
+            <TextInput
+            placeholder="Enter your Full name"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Given  Name  </Text>
+            <TextInput
+            placeholder="Enter your Given name"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Surname  </Text>
+            <TextInput
+            placeholder="Enter your Surname"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }} >
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}> Select Profession  </Text>
+           <View style={{
+            width:"40%",
+            flexDirection:'row',
+           
+          }} > 
+
+           <View>  <Dropdown
+              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+              placeholderStyle={styles.placeholderStyle}
+              selectedTextStyle={styles.selectedTextStyle}
+              inputSearchStyle={styles.inputSearchStyle}
+              iconStyle={styles.iconStyle}
+              data={job}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? 'Select your current Profession' : '...'}
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={item => {
+                setValue(item.value);
+                setIsFocus(false);
+              }}
+            /> </View>
+           <View>  {value == 1 && <Text style={{
+              color: "#223e4b",
+              padding: 20,
+              marginBottom: 16,
+              fontWeight: "bold",
+            }}>Need to provide Government NOC while Enrollment  </Text>}
+            {value == 2 && <Text style={{
+              color: "#223e4b",
+              padding: 20,
+              marginBottom: 16,
+              fontWeight: "bold",
+            }}>Need to provide Official  NOC while Enrollment  </Text>}
+            {value == 3 && <Text style={{
+              color: "#223e4b",
+              padding: 20,
+              marginBottom: 16,
+              fontWeight: "bold",
+            }}>Need to provide Tread Licence while Enrollment  </Text>}
+            {value == 4 && <Text style={{
+              color: "#223e4b",
+              padding: 20,
+              marginBottom: 16,
+              fontWeight: "bold",
+            }}>Need to provide Student ID  while Enrollment  </Text>} </View>
+
+           </View>
+          </View>
+          <View>
+           
+           <Text style={{
+           fontWeight: "bold",
+           paddingBottom: 10,
+           padding:20
+         }} > Select Religion </Text>
+          <View style={{
+           width:"40%",
+           flexDirection:'row',
+           padding:20
+         }} > 
+
+          <View>  <Dropdown
+             style={[styles.dropdown, isFocus3 && { borderColor: 'blue' }]}
+             placeholderStyle={styles.placeholderStyle}
+             selectedTextStyle={styles.selectedTextStyle}
+             inputSearchStyle={styles.inputSearchStyle}
+             iconStyle={styles.iconStyle}
+             data={religion}
+             labelField="religion"
+             valueField="value3"
+             placeholder={!isFocus2 ? 'Select your Religion' : '...'}
+             value={religion}
+             onFocus={() => setIsFocus3(true)}
+             onBlur={() => setIsFocus3(false)}
+             onChange={item => {
+               setValue3(item.value2);
+               setIsFocus3(false);
+             }}
+           /> </View>
+         
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Country Code   </Text>
+            <TextInput
+            placeholder="Enter Country Code"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Mobile No  </Text>
+            <TextInput
+            placeholder="Enter Mobile no"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Select Country of Birth    </Text>
+            <TextInput
+            placeholder="Enter Country of Birth"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Select City of Birth    </Text>
+            <TextInput
+            placeholder="Enter City of Birth"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Select Date of Birth    </Text>
+            <TextInput
+            placeholder="Enter Date of Birth"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+          <View style={{
+            width:"40%",
+            padding:20
+          }}>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+          }}>Select Type of Citizenship  </Text>
+            <TextInput
+            placeholder="Enter Citizenship type"
+            autoCapitalize="none"
+            returnKeyType="next"
+            returnKeyLabel="next"
+          />
+          
+          </View>
+         
+
+          
+         </View>
+          
+
+
+
+
+
+          <Button
+            label="Save and Continue"
+            onPress={() => navigation.navigate("AddressInfo")}
+          />
+
+        </View>
+      </View>
+      
+      <Footer />
+    </ScrollView>
   )
 }
-  
+
 const styles = StyleSheet.create({
-    Container: {
-      height: 400,
-      justifyContent: "flex-start",
-      alignItems: "center",
-    },
-    LogIn: {
-      flex: 0.2,
-      backgroundColor: "gray",
-    },
-    dropdown: {
-      height: 50,
-      width:300,
-      borderColor: 'gray',
-      borderWidth: 0.5,
-      borderRadius: 8,
-      paddingHorizontal: 8,
-    },
-    icon: {
-      marginRight: 5,
-    },
-    label: {
-      position: 'absolute',
-      backgroundColor: 'white',
-      left: 22,
-      top: 8,
-      zIndex: 999,
-      paddingHorizontal: 8,
-      fontSize: 14,
-    },
-    placeholderStyle: {
-      fontSize: 16,
-      width:100
-    },
-    selectedTextStyle: {
-      fontSize: 16,
-    },
-    iconStyle: {
-      width: 20,
-      height: 20,
-    },
-    inputSearchStyle: {
-      height: 40,
-      fontSize: 16,
-    },
-  });
+  Container: {
+    height: 400,
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  LogIn: {
+    flex: 0.2,
+    backgroundColor: "gray",
+  },
+  dropdown: {
+    height: 50,
+    width: 300,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
+  },
+  icon: {
+    marginRight: 5,
+  },
+  label: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    left: 22,
+    top: 8,
+    zIndex: 999,
+    paddingHorizontal: 8,
+    fontSize: 14,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+    width: 100
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
+  },
+  MenuBar: {
+    backgroundColor: "#F7F7F7",
+    height: 50,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    padding: 20,
+  },
+  menuText: {
+    color: "blue",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  sidemenu: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginTop: 10,
+    padding: 10
+  },
+});
