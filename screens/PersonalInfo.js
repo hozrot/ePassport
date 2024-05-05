@@ -17,6 +17,8 @@ import { Dropdown } from 'react-native-element-dropdown';
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
+import MenuBar from "../component/MenuBar";
+import SideMenu from "../component/SideMenu";
 const job = [
   { label: 'Government Job', value: '1' },
   { label: 'Private Job', value: '2' },
@@ -51,52 +53,11 @@ export default function PersonalInfo({ navigation }) {
   const [isFocus2, setIsFocus2] = useState(false);
   const [isFocus3, setIsFocus3] = useState(false);
 
-  const renderLabel = () => {
-    if (value || isFocus) {
-      return (
-        <Text style={[styles.label, isFocus && { color: 'blue' }]}>
-          Dropdown label
-        </Text>
-      );
-    }
-    return null;
-  };
+
   return (
     <ScrollView>
       <Header />
-      <View style={styles.MenuBar}>
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <Text style={styles.menuText}>Home </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.menuText}>Apply Online  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.menuText}>5 Step to e-Pasport  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.menuText}> Urgent Application   </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.menuText}>Instructions </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.menuText}> Passport Fees  </Text>
-        </TouchableOpacity>
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.menuText}>Sign in </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
-          <Text style={styles.menuText}>Sing Up</Text>
-        </TouchableOpacity> */}
-        <TouchableOpacity>
-          <Text style={styles.menuText}> Check Status </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.menuText}>Contact </Text>
-        </TouchableOpacity>
-
-      </View>
+      <MenuBar />
       <View style={{
         paddingLeft: 200
       }}>
@@ -107,52 +68,50 @@ export default function PersonalInfo({ navigation }) {
           fontWeight: "bold",
         }}> Please fill in all required information step by step </Text>
       </View>
+     
+      
       <View style={{
         justifyContent: "space-between",
         flexDirection: "row",
         paddingLeft: 200
       }}>
-
-
-        <View style={{
-          width: "20%",
-          flexDirection: 'column',
-          paddingLeft: 50
-
-        }}>
-          <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
-            <Text style={styles.sidemenu}>Passport Type </Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={{
-            backgroundColor: 'gray',
-          }} onPress={() => navigation.navigate("PersonalInfo")}>
-            <Text style={styles.sidemenu}>Parsonal Information  </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>Address </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>ID Document  </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>Parental Information  </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>Spouse Information  </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>Emergency Contact  </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>Passport Option </Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={styles.sidemenu}>Delivary Option and Appionment  </Text>
-          </TouchableOpacity>
+       <View>
+        <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
+          <Text style={styles.sidemenu}>Passport Type </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{
+          backgroundColor: 'gray',
+        }} onPress={() => navigation.navigate("PersonalInfo")}>
+          <Text style={styles.sidemenu}>Parsonal Information  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>Address </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>ID Document  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>Parental Information  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>Spouse Information  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>Emergency Contact  </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>Passport Option </Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Text style={styles.sidemenu}>Delivary Option and Appionment  </Text>
+        </TouchableOpacity>
+    
         </View>
+
+       
         <View style={{
           width: "80%",
-          paddingBottom:10
+          paddingBottom: 10
         }}>
           <Text
             style={{
@@ -168,293 +127,298 @@ export default function PersonalInfo({ navigation }) {
             fontWeight: "bold",
             paddingBottom: 10,
             paddingLeft: 10,
-            padding:20
+            padding: 20
           }}>Note: If you have any confusion about "Given anme" and "Surname" Please click here for example</Text>
           <View>
-           
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            padding:10
-          }} > Select Gender </Text>
-           <View style={{
-            width:"40%",
-            flexDirection:'row',
-            padding:10
-          }} > 
 
-           <View>  <Dropdown
-              style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={gender}
-              labelField="gender"
-              valueField="value2"
-              placeholder={!isFocus2 ? 'Select your Gender' : '...'}
-              value={value2}
-              onFocus={() => setIsFocus2(true)}
-              onBlur={() => setIsFocus2(false)}
-              onChange={item => {
-                setValue2(item.value2);
-                setIsFocus2(false);
-              }}
-            /> </View>
-           <View>  {value2 == 3 && <Text style={{
-              color: "#223e4b",
-              padding: 20,
-              marginBottom: 16,
+            <Text style={{
               fontWeight: "bold",
-            }}>Need to provide Certification Of Other Gender   </Text>} </View>
+              paddingBottom: 10,
+              padding: 10
+            }} > Select Gender </Text>
+            <View style={{
+              width: "40%",
+              flexDirection: 'row',
+              padding: 10
+            }} >
 
-           </View>
-           
-          
+              <View>  <Dropdown
+                style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={gender}
+                labelField="gender"
+                valueField="value2"
+                placeholder={!isFocus2 ? 'Select your Gender' : '...'}
+                value={value2}
+                onFocus={() => setIsFocus2(true)}
+                onBlur={() => setIsFocus2(false)}
+                onChange={item => {
+                  setValue2(item.value2);
+                  setIsFocus2(false);
+                }}
+              /> </View>
+              <View>  {value2 == 3 && <Text style={{
+                color: "#223e4b",
+                padding: 20,
+                marginBottom: 16,
+                fontWeight: "bold",
+              }}>Need to provide Certification Of Other Gender   </Text>} </View>
 
-           
+            </View>
+
+
+
+
           </View>
           <View style={{
-            width:"40%",
-            padding:20
+            width: "40%",
+            padding: 20
           }}>
             <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Full Name  </Text>
+              fontWeight: "bold",
+              paddingBottom: 10,
+            }}>Full Name  </Text>
             <TextInput
-            placeholder="Enter your Full name"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
+              placeholder="Enter your Full name"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+
           </View>
           <View style={{
-            width:"40%",
-            padding:20
+            width: "40%",
+            padding: 20
           }}>
             <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Given  Name  </Text>
+              fontWeight: "bold",
+              paddingBottom: 10,
+            }}>Given  Name  </Text>
             <TextInput
-            placeholder="Enter your Given name"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
+              placeholder="Enter your Given name"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+
           </View>
           <View style={{
-            width:"40%",
-            padding:20
+            width: "40%",
+            padding: 20
           }}>
             <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Surname  </Text>
+              fontWeight: "bold",
+              paddingBottom: 10,
+            }}>Surname  </Text>
             <TextInput
-            placeholder="Enter your Surname"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
+              placeholder="Enter your Surname"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+
           </View>
           <View style={{
-            width:"40%",
-            padding:20
+            width: "40%",
+            padding: 20
           }} >
             <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}> Select Profession  </Text>
-           <View style={{
-            width:"40%",
-            flexDirection:'row',
-           
-          }} > 
+              fontWeight: "bold",
+              paddingBottom: 10,
+            }}> Select Profession  </Text>
+            <View style={{
+              width: "40%",
+              flexDirection: 'row',
 
-           <View>  <Dropdown
-              style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-              placeholderStyle={styles.placeholderStyle}
-              selectedTextStyle={styles.selectedTextStyle}
-              inputSearchStyle={styles.inputSearchStyle}
-              iconStyle={styles.iconStyle}
-              data={job}
-              labelField="label"
-              valueField="value"
-              placeholder={!isFocus ? 'Select your current Profession' : '...'}
-              value={value}
-              onFocus={() => setIsFocus(true)}
-              onBlur={() => setIsFocus(false)}
-              onChange={item => {
-                setValue(item.value);
-                setIsFocus(false);
-              }}
-            /> </View>
-           <View>  {value == 1 && <Text style={{
-              color: "#223e4b",
-              padding: 20,
-              marginBottom: 16,
-              fontWeight: "bold",
-            }}>Need to provide Government NOC while Enrollment  </Text>}
-            {value == 2 && <Text style={{
-              color: "#223e4b",
-              padding: 20,
-              marginBottom: 16,
-              fontWeight: "bold",
-            }}>Need to provide Official  NOC while Enrollment  </Text>}
-            {value == 3 && <Text style={{
-              color: "#223e4b",
-              padding: 20,
-              marginBottom: 16,
-              fontWeight: "bold",
-            }}>Need to provide Tread Licence while Enrollment  </Text>}
-            {value == 4 && <Text style={{
-              color: "#223e4b",
-              padding: 20,
-              marginBottom: 16,
-              fontWeight: "bold",
-            }}>Need to provide Student ID  while Enrollment  </Text>} </View>
+            }} >
 
-           </View>
+              <View>  <Dropdown
+                style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={job}
+                labelField="label"
+                valueField="value"
+                placeholder={!isFocus ? 'Select your current Profession' : '...'}
+                value={value}
+                onFocus={() => setIsFocus(true)}
+                onBlur={() => setIsFocus(false)}
+                onChange={item => {
+                  setValue(item.value);
+                  setIsFocus(false);
+                }}
+              /> </View>
+              <View>  {value == 1 && <Text style={{
+                color: "#223e4b",
+                padding: 20,
+                marginBottom: 16,
+                fontWeight: "bold",
+              }}>Need to provide Government NOC while Enrollment  </Text>}
+                {value == 2 && <Text style={{
+                  color: "#223e4b",
+                  padding: 20,
+                  marginBottom: 16,
+                  fontWeight: "bold",
+                }}>Need to provide Official  NOC while Enrollment  </Text>}
+                {value == 3 && <Text style={{
+                  color: "#223e4b",
+                  padding: 20,
+                  marginBottom: 16,
+                  fontWeight: "bold",
+                }}>Need to provide Tread Licence while Enrollment  </Text>}
+                {value == 4 && <Text style={{
+                  color: "#223e4b",
+                  padding: 20,
+                  marginBottom: 16,
+                  fontWeight: "bold",
+                }}>Need to provide Student ID  while Enrollment  </Text>} </View>
+
+            </View>
           </View>
           <View>
-           
-           <Text style={{
-           fontWeight: "bold",
-           paddingBottom: 10,
-           padding:20
-         }} > Select Religion </Text>
-          <View style={{
-           width:"40%",
-           flexDirection:'row',
-           padding:20
-         }} > 
 
-          <View>  <Dropdown
-             style={[styles.dropdown, isFocus3 && { borderColor: 'blue' }]}
-             placeholderStyle={styles.placeholderStyle}
-             selectedTextStyle={styles.selectedTextStyle}
-             inputSearchStyle={styles.inputSearchStyle}
-             iconStyle={styles.iconStyle}
-             data={religion}
-             labelField="religion"
-             valueField="value3"
-             placeholder={!isFocus2 ? 'Select your Religion' : '...'}
-             value={religion}
-             onFocus={() => setIsFocus3(true)}
-             onBlur={() => setIsFocus3(false)}
-             onChange={item => {
-               setValue3(item.value2);
-               setIsFocus3(false);
-             }}
-           /> </View>
-         
-          </View>
-          <View style={{
-            width:"40%",
-            padding:20
-          }}>
             <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Country Code   </Text>
-            <TextInput
-            placeholder="Enter Country Code"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
-          </View>
-          <View style={{
-            width:"40%",
-            padding:20
-          }}>
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Mobile No  </Text>
-            <TextInput
-            placeholder="Enter Mobile no"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
-          </View>
-          <View style={{
-            width:"40%",
-            padding:20
-          }}>
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Select Country of Birth    </Text>
-            <TextInput
-            placeholder="Enter Country of Birth"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
-          </View>
-          <View style={{
-            width:"40%",
-            padding:20
-          }}>
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Select City of Birth    </Text>
-            <TextInput
-            placeholder="Enter City of Birth"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
-          </View>
-          <View style={{
-            width:"40%",
-            padding:20
-          }}>
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Select Date of Birth    </Text>
-            <TextInput
-            placeholder="Enter Date of Birth"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
-          </View>
-          <View style={{
-            width:"40%",
-            padding:20
-          }}>
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-          }}>Select Type of Citizenship  </Text>
-            <TextInput
-            placeholder="Enter Citizenship type"
-            autoCapitalize="none"
-            returnKeyType="next"
-            returnKeyLabel="next"
-          />
-          
-          </View>
-         
+              fontWeight: "bold",
+              paddingBottom: 10,
+              padding: 20
+            }} > Select Religion </Text>
+            <View style={{
+              width: "40%",
+              flexDirection: 'row',
+              padding: 20
+            }} >
 
-          
-         </View>
-          
+              <View>  <Dropdown
+                style={[styles.dropdown, isFocus3 && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={religion}
+                labelField="religion"
+                valueField="value3"
+                placeholder={!isFocus2 ? 'Select your Religion' : '...'}
+                value={religion}
+                onFocus={() => setIsFocus3(true)}
+                onBlur={() => setIsFocus3(false)}
+                onChange={item => {
+                  setValue3(item.value2);
+                  setIsFocus3(false);
+                }}
+              /> </View>
+
+            </View>
+            <View style={{
+              width: "40%",
+              padding: 20
+            }}>
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}>Country Code   </Text>
+              <TextInput
+                placeholder="Enter Country Code"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+            </View>
+            <View style={{
+              width: "40%",
+              padding: 20
+            }}>
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}>Mobile No  </Text>
+              <TextInput
+                placeholder="Enter Mobile no"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+            </View>
+            <Text style={{
+              fontWeight: "bold",
+              paddingBottom: 10,
+              fontSize: 24,
+            }}>Birth Data    </Text>
+            <View style={{
+              width: "40%",
+              padding: 20
+            }}>
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}>Select Country of Birth    </Text>
+              <TextInput
+                placeholder="Enter Country of Birth"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+            </View>
+            <View style={{
+              width: "40%",
+              padding: 20
+            }}>
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}>Select City of Birth    </Text>
+              <TextInput
+                placeholder="Enter City of Birth"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+            </View>
+            <View style={{
+              width: "40%",
+              padding: 20
+            }}>
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}>Select Date of Birth    </Text>
+              <TextInput
+                placeholder="Enter Date of Birth"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+            </View>
+            <View style={{
+              width: "40%",
+              padding: 20
+            }}>
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+              }}>Select Type of Citizenship  </Text>
+              <TextInput
+                placeholder="Enter Citizenship type"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+            </View>
+
+
+
+          </View>
+
 
 
 
@@ -467,13 +431,21 @@ export default function PersonalInfo({ navigation }) {
 
         </View>
       </View>
-      
+     
+
       <Footer />
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
+  sidemenu: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginTop: 10,
+    padding: 10
+  },
   Container: {
     height: 400,
     justifyContent: "flex-start",
@@ -531,11 +503,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  sidemenu: {
-    color: "black",
-    fontWeight: "bold",
-    fontSize: 16,
-    marginTop: 10,
-    padding: 10
-  },
+  
 });

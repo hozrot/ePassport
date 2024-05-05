@@ -1,4 +1,5 @@
-import React from "react";
+import React,{ useMemo, useState } from "react";
+import RadioGroup from 'react-native-radio-buttons-group';
 import {
   View,
   StyleSheet,
@@ -16,69 +17,142 @@ import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 
 export default function PassportOption({navigation}) {
+  const radioButtons = useMemo(() => ([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: 'Regular',
+      value: 'ordinary '
+    },
+    {
+      id: '2',
+      label: 'Express',
+      value: 'official'
+    },
+    {
+      id: '3',
+      label: 'Super Express',
+      value: 'official'
+    }
+  ]), []);
+
+  const [selectedId, setSelectedId] = useState();
   return (
     <ScrollView>
     <Header />
 
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: 20,
-        marginBottom: 50,
-      }}
-    >
-      <Text
-        style={{
+    <View style={{
+        paddingLeft: 200
+      }}>
+        <Text style={{
           color: "#223e4b",
           fontSize: 30,
           marginBottom: 16,
           fontWeight: "bold",
-        }}
-      >
-       Passport Option
-      </Text>
-      <View
-        style={{
-          padding: 32,
-          marginBottom: 16,
-          width: "25%",
-          height: 50,
-        }}
-      >
-        <TextInput
-          icon="mail"
-          placeholder="Enter your email"
-          autoCapitalize="none"
-          autoCompleteType="email"
-          keyboardType="email-address"
-          keyboardAppearance="dark"
-          returnKeyType="next"
-          returnKeyLabel="next"
-        />
+        }}> Please fill in all required information step by step </Text>
       </View>
-      <View
-        style={{ padding: 32, marginBottom: 16, width: "25%", height: 50 }}
-      >
-        <TextInput
-          icon="key"
-          placeholder="Enter your password"
-          secureTextEntry
-          autoCompleteType="password"
-          autoCapitalize="none"
-          keyboardAppearance="dark"
-          returnKeyType="go"
-          returnKeyLabel="go"
-        />
+
+      <View style={{
+        justifyContent: "space-between",
+        flexDirection: "row",
+        paddingLeft: 200
+      }}>
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
+            <Text style={styles.sidemenu}>Passport Type </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("PersonalInfo")}>
+            <Text style={styles.sidemenu}>Parsonal Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("AddressInfo")}>
+            <Text style={styles.sidemenu}>Address </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("IdDoc")}>
+            <Text style={styles.sidemenu}>ID Document  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("ParentalInfo")}> 
+            <Text style={styles.sidemenu}>Parental Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("SpouseInfo")}>
+            <Text style={styles.sidemenu}>Spouse Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("EmergencyContact")} >
+            <Text style={styles.sidemenu}>Emergency Contact  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  style={{
+            backgroundColor: 'gray',
+          }} >
+            <Text style={styles.sidemenu}>Passport Option </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Delivary Option and Appionment  </Text>
+          </TouchableOpacity>
+
+        </View>
+
+
+        <View style={{
+          width: "80%",
+          paddingBottom: 10
+        }}>
+          <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+         Passport Option 
+          </Text>
+          <View style={styles.InputView}>
+          <Text style={styles.InputTitle}> Passport Page </Text>
+            <TextInput
+              placeholder="48/64"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+
+          </View>
+          <View style={styles.InputView}>
+          <Text style={styles.InputTitle}> Validity </Text>
+            <TextInput
+              placeholder="5 years / 10 Years"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+
+          </View>
+          <View style={styles.InputView}>
+          <Text style={styles.InputTitle}> Delivary Type  </Text>
+          <RadioGroup
+            radioButtons={radioButtons}
+            onPress={setSelectedId}
+            selectedId={selectedId}
+            layout='row'
+          />
+
+          </View>
+
+          <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+         Passport Price :  
+          </Text>
+         
+          <Button
+            label="Save and Continue"
+            onPress={() => navigation.navigate("DelevaryOption")} 
+          />
+
+        </View>
       </View>
-      <Button
-        label="Save and Continue"
-        onPress={() => navigation.navigate("DelevaryOption")}
-      />
-    
-    </View>
     <Footer />
   </ScrollView>
   )
@@ -93,5 +167,20 @@ const styles = StyleSheet.create({
     LogIn: {
       flex: 0.2,
       backgroundColor: "gray",
+    },
+    sidemenu: {
+      color: "black",
+      fontWeight: "bold",
+      fontSize: 16,
+      marginTop: 10,
+      padding: 10
+    },
+    InputTitle:{
+      fontWeight: "bold",
+      paddingBottom: 10,
+    },
+    InputView: {
+      width: "40%",
+      padding: 10
     },
   });

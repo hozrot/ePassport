@@ -90,15 +90,8 @@ export default function PassportType({ navigation }) {
         flexDirection: "row",
         paddingLeft: 200
       }}>
-        <View style={{
-          width: "20%",
-          flexDirection: 'column',
-          paddingLeft: 50
-
-        }}>
-          <TouchableOpacity style={{
-        backgroundColor:'gray',
-      }}>
+        <View style={styles.sideBlock}>
+          <TouchableOpacity style={{ backgroundColor:'gray',}}>
             <Text style={styles.sidemenu}>Passport Type </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("PersonalInfo")}>
@@ -186,6 +179,11 @@ const styles = StyleSheet.create({
   LogIn: {
     flex: 0.2,
     backgroundColor: "gray",
+  },
+  sideBlock:{
+    width: "20%",
+    flexDirection: 'column',
+    paddingLeft: 50
   },
   sidemenu: {
     color: "black",
