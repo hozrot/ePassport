@@ -94,7 +94,7 @@ export default function PassportType({ navigation }) {
           <TouchableOpacity style={{ backgroundColor:'gray',}}>
             <Text style={styles.sidemenu}>Passport Type </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("PersonalInfo")}>
+          <TouchableOpacity>
             <Text style={styles.sidemenu}>Parsonal Information  </Text>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -142,6 +142,7 @@ export default function PassportType({ navigation }) {
                 onPress={setSelectedId}
                 selectedId={selectedId}
                 layout='row'
+                selected
               />
 
             {selectedId == 1 && <Text style={{

@@ -20,17 +20,14 @@ function DelevaryOption({ navigation }) {
     {
       id: '1', // acts as primary key, should be unique and non-empty string
       label: 'Regular',
-      value: 'ordinary '
     },
     {
       id: '2',
       label: 'Express',
-      value: 'official'
     },
     {
       id: '3',
       label: 'Super Express',
-      value: 'official'
     }
   ]), []);
 
@@ -38,7 +35,7 @@ function DelevaryOption({ navigation }) {
   return (
     <ScrollView>
       <Header />
-     
+
       <View style={{
         paddingLeft: 200
       }}>
@@ -59,25 +56,25 @@ function DelevaryOption({ navigation }) {
           <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
             <Text style={styles.sidemenu}>Passport Type </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("PersonalInfo")}>
+          <TouchableOpacity onPress={() => navigation.navigate("PersonalInfo")}>
             <Text style={styles.sidemenu}>Parsonal Information  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("AddressInfo")}>
+          <TouchableOpacity onPress={() => navigation.navigate("AddressInfo")}>
             <Text style={styles.sidemenu}>Address </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("IdDoc")}>
+          <TouchableOpacity onPress={() => navigation.navigate("IdDoc")}>
             <Text style={styles.sidemenu}>ID Document  </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("ParentalInfo")}> 
+          <TouchableOpacity onPress={() => navigation.navigate("ParentalInfo")}>
             <Text style={styles.sidemenu}>Parental Information  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("SpouseInfo")}>
+          <TouchableOpacity onPress={() => navigation.navigate("SpouseInfo")}>
             <Text style={styles.sidemenu}>Spouse Information  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("EmergencyContact")} >
+          <TouchableOpacity onPress={() => navigation.navigate("EmergencyContact")} >
             <Text style={styles.sidemenu}>Emergency Contact  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("PassportOption")}>
+          <TouchableOpacity onPress={() => navigation.navigate("PassportOption")}>
             <Text style={styles.sidemenu}>Passport Option </Text>
           </TouchableOpacity>
           <TouchableOpacity style={{
@@ -101,10 +98,54 @@ function DelevaryOption({ navigation }) {
               padding: 20
             }}
           >
-         Delivary Option
-          </Text> 
+            Delivary Option
+          </Text>
+          <View style={styles.InputView}>
+            <Text style={styles.InputTitle}> Delivary Type  </Text>
+            <RadioGroup
+              radioButtons={radioButtons}
+              onPress={setSelectedId}
+              selectedId={selectedId}
+              layout='row'
+            />
 
-         
+          </View>
+
+          {selectedId == 1 && <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+            Passport Price : 5,750 Taka 
+          </Text>
+          }
+           {selectedId == 2 && <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+            Passport Price : 8,050 Taka 
+          </Text>
+          }
+           {selectedId == 3 && <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+            Passport Price : 10,350 Taka 
+          </Text>
+          }
+
+
           <Button
             label="Save and Continue"
             onPress={() => navigation.navigate("ApplicationSummary")}
@@ -134,7 +175,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 10
   },
-  InputTitle:{
+  InputTitle: {
     fontWeight: "bold",
     paddingBottom: 10,
   },

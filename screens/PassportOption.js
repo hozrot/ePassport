@@ -15,27 +15,32 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
+import { RadioButton } from "react-native-ui-lib";
 
 export default function PassportOption({navigation}) {
-  const radioButtons = useMemo(() => ([
+  const pageButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
-      label: 'Regular',
-      value: 'ordinary '
+      label: '48 Page',
     },
     {
       id: '2',
-      label: 'Express',
-      value: 'official'
+      label: '64 Page',
+    },
+  ]), []);
+  const validityButtons = useMemo(() => ([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: '5 Years',
     },
     {
-      id: '3',
-      label: 'Super Express',
-      value: 'official'
-    }
+      id: '2',
+      label: '10 Years',
+    },
   ]), []);
 
-  const [selectedId, setSelectedId] = useState();
+  const [pageId, setPageId] = useState();
+  const [validityId, setValidityId] = useState();
   return (
     <ScrollView>
     <Header />
@@ -92,7 +97,7 @@ export default function PassportOption({navigation}) {
 
         <View style={{
           width: "80%",
-          paddingBottom: 10
+          padding: 20
         }}>
           <Text
             style={{
@@ -106,36 +111,33 @@ export default function PassportOption({navigation}) {
           </Text>
           <View style={styles.InputView}>
           <Text style={styles.InputTitle}> Passport Page </Text>
-            <TextInput
-              placeholder="48/64"
-              autoCapitalize="none"
-              returnKeyType="next"
-              returnKeyLabel="next"
-            />
+          <RadioGroup
+            radioButtons={pageButtons}
+            onPress={setPageId}
+            selectedId={pageId}
+            layout='row'
+            disabled={1}
+          />
+        {/* <RadioButton radioButtons={pageButtons}
+            onPress={setPageId}
+            selectedId={pageId}
+            layout='row'
+            disabled
+            selected/> */}
 
           </View>
           <View style={styles.InputView}>
           <Text style={styles.InputTitle}> Validity </Text>
-            <TextInput
-              placeholder="5 years / 10 Years"
-              autoCapitalize="none"
-              returnKeyType="next"
-              returnKeyLabel="next"
-            />
-
-          </View>
-          <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Delivary Type  </Text>
           <RadioGroup
-            radioButtons={radioButtons}
-            onPress={setSelectedId}
-            selectedId={selectedId}
+            radioButtons={validityButtons}
+            onPress={setValidityId}
+            selectedId={validityId}
             layout='row'
+            selected
           />
-
           </View>
-
-          <Text
+        
+{validityId==1 &&  <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -143,8 +145,19 @@ export default function PassportOption({navigation}) {
               padding: 20
             }}
           >
-         Passport Price :  
-          </Text>
+         Passport Price :  4,025  Taka 
+          </Text>}
+          {validityId==2 &&  <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+         Passport Price :  5,750 Taka 
+          </Text>}
+         
          
           <Button
             label="Save and Continue"
