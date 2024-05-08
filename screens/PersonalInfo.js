@@ -10,13 +10,9 @@ import {
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import Banner from "../component/Banner";
-import DatePicker from 'react-native-date-picker';
-import RNDateTimePicker from 'react-native-ui-lib';
-import { IndexPath, Layout, Select, SelectItem, Datepicker } from '@ui-kitten/components';
 import { Dropdown } from 'react-native-element-dropdown';
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
-import { Entypo as Icon } from "@expo/vector-icons";
 import MenuBar from "../component/MenuBar";
 import SideMenu from "../component/SideMenu";
 const job = [
@@ -38,10 +34,12 @@ const religion = [
   { religion: 'Islam', value3: '1' },
   { religion: 'Hindu', value3: '2' },
   { religion: 'Buddha', value3: '3' },
-
-
 ];
-
+const citizenship = [
+  { citizenship: 'By Birth', citizenshipId: '1' },
+  { citizenship: 'Native', citizenshipId: '2' },
+  { citizenship: 'Migration', citizenshipId: '3' },
+];
 
 
 export default function PersonalInfo({ navigation }) {
@@ -49,8 +47,10 @@ export default function PersonalInfo({ navigation }) {
   const [value, setValue] = useState(null);
   const [value2, setValue2] = useState(null);
   const [value3, setValue3] = useState(null);
+  const [citizenshipId, setCitizenshipId] = useState(null);
   const [isFocus, setIsFocus] = useState(false);
   const [isFocus2, setIsFocus2] = useState(false);
+  const [citizenshipFocus, setCitizenshipFocus] = useState(false);
   const [isFocus3, setIsFocus3] = useState(false);
 
 
@@ -165,7 +165,7 @@ export default function PersonalInfo({ navigation }) {
                 padding: 20,
                 marginBottom: 16,
                 fontWeight: "bold",
-              }}>Need to provide Certification Of Other Gender   </Text>} </View>
+              }}>Need to provide Certification for  Other Gender   </Text>} </View>
 
             </View>
 
@@ -302,12 +302,12 @@ export default function PersonalInfo({ navigation }) {
                 data={religion}
                 labelField="religion"
                 valueField="value3"
-                placeholder={!isFocus2 ? 'Select your Religion' : '...'}
+                placeholder={!isFocus3 ? 'Select your Religion' : '...'}
                 value={religion}
                 onFocus={() => setIsFocus3(true)}
                 onBlur={() => setIsFocus3(false)}
                 onChange={item => {
-                  setValue3(item.value2);
+                  setValue3(item.value3);
                   setIsFocus3(false);
                 }}
               /> </View>
@@ -382,6 +382,12 @@ export default function PersonalInfo({ navigation }) {
               />
 
             </View>
+            <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            paddingLeft: 10,
+            padding: 20
+          }}>Note:You can enter max 28 Charecter for your City of birth</Text>
             <View style={{
               width: "40%",
               padding: 20
@@ -398,22 +404,76 @@ export default function PersonalInfo({ navigation }) {
               />
 
             </View>
+
+            <Text style={{
+              fontWeight: "bold",
+              paddingBottom: 10,
+              padding: 10
+            }} > Select Type of Citizenship </Text>
             <View style={{
               width: "40%",
-              padding: 20
-            }}>
-              <Text style={{
+              flexDirection: 'row',
+              padding: 10
+            }} >
+
+              <View>  <Dropdown
+                style={[styles.dropdown, citizenshipFocus && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={citizenship}
+                labelField="citizenship"
+                valueField="citizenshipId"
+                placeholder={!citizenshipFocus ? 'Select your Citizenship' : '...'}
+                value={citizenshipId}
+                onFocus={() => setCitizenshipFocus(true)}
+                onBlur={() => setCitizenshipFocus(false)}
+                onChange={item => {
+                  setCitizenshipId(item.citizenshipId);
+                  setCitizenshipFocus(false);
+                }}
+              /> </View>
+              <View>  {citizenshipId == 3 && <Text style={{
+                color: "#223e4b",
+                padding: 20,
+                marginBottom: 16,
                 fontWeight: "bold",
-                paddingBottom: 10,
-              }}>Select Type of Citizenship  </Text>
-              <TextInput
-                placeholder="Enter Citizenship type"
-                autoCapitalize="none"
-                returnKeyType="next"
-                returnKeyLabel="next"
-              />
+              }}>Need to provide Certification for  Migration </Text>} </View>
 
             </View>
+            {/* <View style={{
+              width: "40%",
+              flexDirection: 'row',
+              padding: 10
+            }} >
+
+              <View>  <Dropdown
+                style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={gender}
+                labelField="gender"
+                valueField="value2"
+                placeholder={!isFocus2 ? 'Select your Gender' : '...'}
+                value={value2}
+                onFocus={() => setIsFocus2(true)}
+                onBlur={() => setIsFocus2(false)}
+                onChange={item => {
+                  setValue2(item.value2);
+                  setIsFocus2(false);
+                }}
+              /> </View>
+              <View>  {value2 == 3 && <Text style={{
+                color: "#223e4b",
+                padding: 20,
+                marginBottom: 16,
+                fontWeight: "bold",
+              }}>Need to provide Certification for  Other Gender   </Text>} </View>
+
+            </View> */}
 
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -10,11 +10,25 @@ import {
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import Banner from "../component/Banner";
-
+import { Dropdown } from 'react-native-element-dropdown';
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
-import { Entypo as Icon } from "@expo/vector-icons";
+
+
+const relationship = [
+  { relationship: 'Father', value2: '1' },
+  { relationship: 'Uncle', value2: '2' },
+  { relationship: 'Legal Guardian', value2: '3' },
+
+
+];
+
+
 function EmergencyContact({ navigation }) {
+  
+  const [value2, setValue2] = useState(null);
+  const [isFocus2, setIsFocus2] = useState(false);
+  
   return (
     <ScrollView>
       <Header />
@@ -86,15 +100,32 @@ function EmergencyContact({ navigation }) {
           
           
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Select   Emergency Contact relationship</Text>
-            <TextInput
-              placeholder="Enter your relationship"
-              autoCapitalize="none"
-              returnKeyType="next"
-              returnKeyLabel="next"
-            />
-
+          <Text style={styles.InputTitle}>Emergency Contact relationship</Text>
+          <Dropdown
+                style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                inputSearchStyle={styles.inputSearchStyle}
+                iconStyle={styles.iconStyle}
+                data={relationship}
+                labelField="relationship"
+                valueField="value2"
+                placeholder={!isFocus2 ? 'Select Emergency Contact relationship' : '...'}
+                value={value2}
+                onFocus={() => setIsFocus2(true)}
+                onBlur={() => setIsFocus2(false)}
+                onChange={item => {
+                  setValue2(item.value2);
+                  setIsFocus2(false);
+                }}
+              /> 
           </View>
+          <View style={{
+              width: "40%",
+              flexDirection: 'row',
+              padding: 10
+            }} >
+            </View>
           <View style={styles.InputView}>
           <Text style={styles.InputTitle}> Name (as per NID )</Text>
             <TextInput
@@ -178,7 +209,7 @@ function EmergencyContact({ navigation }) {
               autoCapitalize="none"
               returnKeyType="next"
               returnKeyLabel="next"
-            />
+            /> 
           </View>
           <View style={styles.InputView}>
             <Text style={styles.InputTitle}>Contact Number   </Text>

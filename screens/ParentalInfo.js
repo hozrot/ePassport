@@ -216,6 +216,12 @@ function ParentalInfo({ navigation }) {
               returnKeyLabel="next"
             />
           </View>
+          <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            paddingLeft: 10,
+            padding: 20
+          }}>Note: This Document is Mandatory to submit while enrollment</Text>
           
           <Button
             label="Save and Continue"
