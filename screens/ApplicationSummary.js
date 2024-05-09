@@ -18,7 +18,7 @@ function ApplicationSummary({ navigation }) {
   return (
     <ScrollView>
       <Header />
-     
+
       <View
         style={{
           flex: 1,
@@ -37,13 +37,57 @@ function ApplicationSummary({ navigation }) {
             fontWeight: "bold",
           }}
         >
-         Application Summary
+          Application Summary
         </Text>
-        <Button
+
+        <View
+          style={{
+            height: 500,
+            width: "60%",
+            backgroundColor: "gray",
+            padding: 30,
+          }}
+        >
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+                
+              }}
+            >
+              <Text  style={{
+            color: "#223e4b",
+            fontSize: 18,
+            marginBottom: 16,
+           
+          }}>Passport Type: </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+                padding: 20,
+              }}
+            >
+              <Text  style={{
+            color: "#223e4b",
+            fontSize: 18,
+           
+            fontWeight: "bold",
+          }}>Ordinary passport </Text>
+            </View>
+          </View>
+          
+        </View>
+
+        {/* <Button
           label="Payment"
           onPress={() => navigation.navigate("#")}
         />
-       
+        */}
       </View>
       <Footer />
     </ScrollView>

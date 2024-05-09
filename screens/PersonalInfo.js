@@ -40,19 +40,34 @@ const citizenship = [
   { citizenship: 'Native', citizenshipId: '2' },
   { citizenship: 'Migration', citizenshipId: '3' },
 ];
-
+const year = [
+  { year: "2022", yearId: "1" },
+  { year: "2015", yearId: "2" },
+  { year: "2006", yearId: "3" },
+  { year: "2000", yearId: "4" },
+  { year: "1995", yearId: "5" },
+  { year: "1990", yearId: "6" },
+  { year: "1985", yearId: "7" },
+]
 
 export default function PersonalInfo({ navigation }) {
-  const [date, setDate] = useState(new Date());
-  const [value, setValue] = useState(null);
-  const [value2, setValue2] = useState(null);
-  const [value3, setValue3] = useState(null);
-  const [citizenshipId, setCitizenshipId] = useState(null);
-  const [isFocus, setIsFocus] = useState(false);
-  const [isFocus2, setIsFocus2] = useState(false);
-  const [citizenshipFocus, setCitizenshipFocus] = useState(false);
-  const [isFocus3, setIsFocus3] = useState(false);
 
+  const [date, setDate] = useState(null);
+  const [month, setMonth] = useState(null);
+
+  const [value, setValue] = useState(null);
+  const [isFocus, setIsFocus] = useState(false);
+  const [value2, setValue2] = useState(null);
+  const [isFocus2, setIsFocus2] = useState(false);
+  const [value3, setValue3] = useState(null);
+  const [isFocus3, setIsFocus3] = useState(false);
+  const [citizenshipId, setCitizenshipId] = useState(null);
+  const [citizenshipFocus, setCitizenshipFocus] = useState(false);
+  const [yearId, setYearId] = useState(null);
+  const [yearFocus, setYearFocus] = useState(false);
+
+  const [age, setAge] = useState(null);
+  const ageAsNumber = Number(age);
 
   return (
     <ScrollView>
@@ -68,47 +83,47 @@ export default function PersonalInfo({ navigation }) {
           fontWeight: "bold",
         }}> Please fill in all required information step by step </Text>
       </View>
-     
-      
+
+
       <View style={{
         justifyContent: "space-between",
         flexDirection: "row",
         paddingLeft: 200
       }}>
-       <View>
-        <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
-          <Text style={styles.sidemenu}>Passport Type </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={{
-          backgroundColor: 'gray',
-        }} onPress={() => navigation.navigate("PersonalInfo")}>
-          <Text style={styles.sidemenu}>Parsonal Information  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>Address </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>ID Document  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>Parental Information  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>Spouse Information  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>Emergency Contact  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>Passport Option </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Text style={styles.sidemenu}>Delivary Option and Appionment  </Text>
-        </TouchableOpacity>
-    
+        <View>
+          <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
+            <Text style={styles.sidemenu}>Passport Type </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={{
+            backgroundColor: 'gray',
+          }} onPress={() => navigation.navigate("PersonalInfo")}>
+            <Text style={styles.sidemenu}>Parsonal Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Address </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>ID Document  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Parental Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Spouse Information  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Emergency Contact  </Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={styles.sidemenu}>Passport Option </Text>
+          </TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("ApplicationSummary")}>
+            <Text style={styles.sidemenu}>Delivary Option and Appionment  </Text>
+          </TouchableOpacity>
+
         </View>
 
-       
+
         <View style={{
           width: "80%",
           paddingBottom: 10
@@ -121,7 +136,7 @@ export default function PersonalInfo({ navigation }) {
               padding: 20
             }}
           >
-            Personal Information
+            Personal Information (ব্যাক্তিগত তথ্য)
           </Text>
           <Text style={{
             fontWeight: "bold",
@@ -135,7 +150,7 @@ export default function PersonalInfo({ navigation }) {
               fontWeight: "bold",
               paddingBottom: 10,
               padding: 10
-            }} > Select Gender </Text>
+            }} > Select Gender (লিঙ্গ ) </Text>
             <View style={{
               width: "40%",
               flexDirection: 'row',
@@ -180,7 +195,7 @@ export default function PersonalInfo({ navigation }) {
             <Text style={{
               fontWeight: "bold",
               paddingBottom: 10,
-            }}>Full Name  </Text>
+            }}>Full Name (সম্পুর্ণ নাম)  </Text>
             <TextInput
               placeholder="Enter your Full name"
               autoCapitalize="none"
@@ -196,7 +211,7 @@ export default function PersonalInfo({ navigation }) {
             <Text style={{
               fontWeight: "bold",
               paddingBottom: 10,
-            }}>Given  Name  </Text>
+            }}>Given  Name (নামের ১ম অংশ ) </Text>
             <TextInput
               placeholder="Enter your Given name"
               autoCapitalize="none"
@@ -212,7 +227,7 @@ export default function PersonalInfo({ navigation }) {
             <Text style={{
               fontWeight: "bold",
               paddingBottom: 10,
-            }}>Surname  </Text>
+            }}>Surname (নামের শেষ অংশ)  </Text>
             <TextInput
               placeholder="Enter your Surname"
               autoCapitalize="none"
@@ -228,7 +243,7 @@ export default function PersonalInfo({ navigation }) {
             <Text style={{
               fontWeight: "bold",
               paddingBottom: 10,
-            }}> Select Profession  </Text>
+            }}> Select Profession (পেশা) </Text>
             <View style={{
               width: "40%",
               flexDirection: 'row',
@@ -286,7 +301,7 @@ export default function PersonalInfo({ navigation }) {
               fontWeight: "bold",
               paddingBottom: 10,
               padding: 20
-            }} > Select Religion </Text>
+            }} > Select Religion (ধর্ম ) </Text>
             <View style={{
               width: "40%",
               flexDirection: 'row',
@@ -320,7 +335,7 @@ export default function PersonalInfo({ navigation }) {
               <Text style={{
                 fontWeight: "bold",
                 paddingBottom: 10,
-              }}>Country Code   </Text>
+              }}>Country Code (দেশের কোড)  </Text>
               <TextInput
                 placeholder="Enter Country Code"
                 autoCapitalize="none"
@@ -336,7 +351,7 @@ export default function PersonalInfo({ navigation }) {
               <Text style={{
                 fontWeight: "bold",
                 paddingBottom: 10,
-              }}>Mobile No  </Text>
+              }}>Mobile No (মোবাইল নং )  </Text>
               <TextInput
                 placeholder="Enter Mobile no"
                 autoCapitalize="none"
@@ -349,7 +364,7 @@ export default function PersonalInfo({ navigation }) {
               fontWeight: "bold",
               paddingBottom: 10,
               fontSize: 24,
-            }}>Birth Data    </Text>
+            }}>Birth Data  (জন্মগ্রহন সংক্রান্ত তথ্য )  </Text>
             <View style={{
               width: "40%",
               padding: 20
@@ -357,7 +372,7 @@ export default function PersonalInfo({ navigation }) {
               <Text style={{
                 fontWeight: "bold",
                 paddingBottom: 10,
-              }}>Select Country of Birth    </Text>
+              }}>Select Country of Birth(যে দেশে জন্মগ্রহন করেছেন) </Text>
               <TextInput
                 placeholder="Enter Country of Birth"
                 autoCapitalize="none"
@@ -373,7 +388,7 @@ export default function PersonalInfo({ navigation }) {
               <Text style={{
                 fontWeight: "bold",
                 paddingBottom: 10,
-              }}>Select City of Birth    </Text>
+              }}>Select City of Birth (যে শহরে জন্মগ্রহন করেছেন)  </Text>
               <TextInput
                 placeholder="Enter City of Birth"
                 autoCapitalize="none"
@@ -383,33 +398,86 @@ export default function PersonalInfo({ navigation }) {
 
             </View>
             <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingLeft: 10,
-            padding: 20
-          }}>Note:You can enter max 28 Charecter for your City of birth</Text>
+              fontWeight: "bold",
+            }}>Note:You can enter max 28 Charecter for your City of birth</Text>
             <View style={{
-              width: "40%",
+              width: "75%",
               padding: 20
             }}>
               <Text style={{
                 fontWeight: "bold",
                 paddingBottom: 10,
-              }}>Select Date of Birth    </Text>
-              <TextInput
-                placeholder="Enter Date of Birth"
-                autoCapitalize="none"
-                returnKeyType="next"
-                returnKeyLabel="next"
-              />
+              }}>Select Date of Birth (জন্মতারিখ )   </Text>
+              <View style={{
+                justifyContent: 'space-between',
+                flexDirection: "row",
+              }}>
 
+                <input
+                  value={date}
+                  onChange={e => setDate(e.target.value)}
+                  type="number"
+                  enterKeyHint="enter"
+                  placeholder="Enter Date 1-31"
+                />
+
+                <input
+                  value={month}
+                  onChange={e => setMonth(e.target.value)}
+                  type="number"
+                  enterKeyHint="enter"
+                  placeholder="Enter Month 1-12"
+                />
+
+                <Dropdown
+                  style={[styles.dropdown, yearFocus && { borderColor: 'blue' }]}
+                  data={year}
+                  labelField="year"
+                  valueField="yearId"
+                  placeholder={!yearFocus ? 'Select Year of Birth' : '...'}
+                  value={yearId}
+                  onFocus={() => setYearFocus(true)}
+                  onBlur={() => setYearFocus(false)}
+                  onChange={item => {
+                    setYearId(item.yearId);
+                    setYearFocus(false);
+                  }}
+                />
+
+               
+
+              </View>
+              <View style={{padding:10
+             
+            }}>  {yearId == 1 && <Text style={{
+                  color: "#223e4b",
+                
+                  fontWeight: "bold",
+                }}>Your Age is Less than six. Need to submit 3R size Lab Print (gray Background) Picture while Enrolment </Text>}
+                  {yearId == 2 && <Text style={{
+                    color: "#223e4b",
+                  
+                    fontWeight: "bold",
+                  }}> Your Age is greater than six but less than 18 . Need to submit BRC  while Enrolment </Text>}
+                  {yearId == 3 && <Text style={{
+                    color: "#223e4b",
+                  
+                    fontWeight: "bold",
+                  }}> Your Age is greater than 18 but less than 20 . Need to submit BRC or NID   while Enrolment </Text>}
+                  {yearId >= 4 && <Text style={{
+                    color: "#223e4b",
+                  
+                    fontWeight: "bold",
+                  }}> Your Age is greater  than 18 . Need to submit NID  while Enrolment </Text>}
+
+                </View>
             </View>
 
             <Text style={{
               fontWeight: "bold",
               paddingBottom: 10,
               padding: 10
-            }} > Select Type of Citizenship </Text>
+            }} > Select Type of Citizenship (জাতীয়তা)</Text>
             <View style={{
               width: "40%",
               flexDirection: 'row',
@@ -418,10 +486,6 @@ export default function PersonalInfo({ navigation }) {
 
               <View>  <Dropdown
                 style={[styles.dropdown, citizenshipFocus && { borderColor: 'blue' }]}
-                placeholderStyle={styles.placeholderStyle}
-                selectedTextStyle={styles.selectedTextStyle}
-                inputSearchStyle={styles.inputSearchStyle}
-                iconStyle={styles.iconStyle}
                 data={citizenship}
                 labelField="citizenship"
                 valueField="citizenshipId"
@@ -491,7 +555,7 @@ export default function PersonalInfo({ navigation }) {
 
         </View>
       </View>
-     
+
 
       <Footer />
     </ScrollView>
@@ -517,11 +581,11 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     height: 50,
-    width: 300,
+    width: 400,
     borderColor: 'gray',
     borderWidth: 0.5,
     borderRadius: 8,
-    paddingHorizontal: 8,
+    padding: 10,
   },
   icon: {
     marginRight: 5,
@@ -537,7 +601,7 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
-    width: 100
+
   },
   selectedTextStyle: {
     fontSize: 16,
@@ -563,5 +627,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
   },
-  
+
 });

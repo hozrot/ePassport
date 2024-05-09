@@ -19,17 +19,17 @@ function IdDoc({ navigation }) {
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
-      label: 'Yes MRP',
+      label: 'Yes, I have a Machine Readable Passport(MRP)',
       value: 'ordinary '
     },
     {
       id: '2',
-      label: 'Yes ePP',
+      label: 'Yes, I have an ePassport (ePP)',
       value: 'official'
     },
     {
       id: '3',
-      label: 'No',
+      label: 'No, I want to have a passport for the first time',
       value: 'official'
     }
   ]), []);
@@ -134,7 +134,37 @@ function IdDoc({ navigation }) {
             fontWeight: "bold",
             paddingBottom: 10
           }}> Do you have any previous Passport?</Text>
-
+          {/* <View  style={{
+           flexDirection:'row'
+          }}>
+          <label style={{
+            fontWeight: "bold",
+            fontSize:24
+          }} >
+          <input type="radio" name="mrp" value="mrp"  />
+          Yes, MRP
+        </label>
+        <label style={{
+            fontWeight: "bold",
+            fontSize:24
+          }} >
+          <input type="radio" name="epp" value="epp"   />
+        Yes, ePP
+        </label>
+        <label style={{
+            fontWeight: "bold",
+            fontSize:24
+          }} >
+          <input type="radio" name="no" value="no"   />
+        No
+        </label>
+          </View> */}
+         
+          {/* {value == "mrp" && <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            paddingTop: 10
+          }}> ** Provide Your MRP data and Bring that passport while Enrollment  </Text>} */}
           <RadioGroup
             radioButtons={radioButtons}
             onPress={setSelectedId}
@@ -142,16 +172,44 @@ function IdDoc({ navigation }) {
             layout='row'
           />
 
-          {selectedId == 1 && <Text style={{
+          {selectedId == 1 && 
+          <View style={styles.InputView}>
+          <Text style={styles.InputTitle}>MRP no. </Text>
+            <TextInput
+              placeholder="Enter your Passport (MRP) number"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+            <Text style={{
             fontWeight: "bold",
             paddingBottom: 10,
             paddingTop: 10
-          }}> ** Provide Your MRP data and Bring that passport while Enrollment  </Text>}
-          {selectedId == 2 && <Text style={{
+          }}> ** Provide Your MRP data and Bring that passport while Enrollment  </Text>
+
+          </View>
+          
+          
+          }
+         {selectedId == 2 && 
+          <View style={styles.InputView}>
+          <Text style={styles.InputTitle}>ePP no. </Text>
+            <TextInput
+              placeholder="Enter your Passport (ePP) number"
+              autoCapitalize="none"
+              returnKeyType="next"
+              returnKeyLabel="next"
+            />
+            <Text style={{
             fontWeight: "bold",
             paddingBottom: 10,
             paddingTop: 10
-          }}> **  Provide Your ePP data and Bring that passport while Enrollment </Text>}
+          }}> ** Provide Your ePP data and Bring that passport while Enrollment  </Text>
+
+          </View>
+          
+          
+          }
           {selectedId == 3 && <Text style={{
             fontWeight: "bold",
             paddingBottom: 10,

@@ -81,16 +81,24 @@ function ParentalInfo({ navigation }) {
               padding: 20
             }}
           >
-           Parental Info
+           Parental Info (পিতা-মাতার তথ্য )
           </Text>
-          
-          <Text style={{
+
+          <View style={{
+            flexDirection: 'row',
+            flex: 1
+          }}>
+            <View style={{
+              padding: 10,
+              flex: .5
+            }}>
+              <Text style={{
             fontWeight: "bold",
             padding: 10,
            
-          }}> Father's Information </Text>
+          }}> Father's Information (বাবার তথ্য)</Text>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Father's Name </Text>
+          <Text style={styles.InputTitle}> Father's Name (বাবার নাম )</Text>
             <TextInput
               placeholder="Enter your Father's   name"
               autoCapitalize="none"
@@ -100,7 +108,7 @@ function ParentalInfo({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>Profession  </Text>
+          <Text style={styles.InputTitle}>Profession (পেশা) </Text>
             <TextInput
               placeholder="Enter your father's Profession"
               autoCapitalize="none"
@@ -110,7 +118,7 @@ function ParentalInfo({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Nationality  </Text>
+            <Text style={styles.InputTitle}>Nationality (জাতীয়তা) </Text>
             <TextInput
               placeholder="Enter your father's Nationality"
               autoCapitalize="none"
@@ -119,7 +127,7 @@ function ParentalInfo({ navigation }) {
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Father's NID no.  (Optional)  </Text>
+            <Text style={styles.InputTitle}>Father's NID no.(বাবার এন আই ডি নং )  (Optional)  </Text>
             <TextInput
               placeholder="Enter your  father's NID no. "
               autoCapitalize="none"
@@ -127,15 +135,19 @@ function ParentalInfo({ navigation }) {
               returnKeyLabel="next"
             />
           </View>
-         
-          <Text style={{
+              </View>
+              <View style={{
+              padding: 10,
+              flex: .5
+            }}>
+              <Text style={{
             fontWeight: "bold",
             padding: 10,
            
-          }}> Mother's Information </Text>
+          }}> Mother's Information (মায়ের তথ্য) </Text>
           
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Father's Name </Text>
+          <Text style={styles.InputTitle}> Mother's Name (মায়ের নাম )</Text>
             <TextInput
               placeholder="Enter your mother's   name"
               autoCapitalize="none"
@@ -145,7 +157,7 @@ function ParentalInfo({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>Profession  </Text>
+          <Text style={styles.InputTitle}>Profession (পেশা) </Text>
             <TextInput
               placeholder="Enter your mother's Profession"
               autoCapitalize="none"
@@ -155,7 +167,7 @@ function ParentalInfo({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Nationality  </Text>
+            <Text style={styles.InputTitle}>Nationality (জাতীয়তা) </Text>
             <TextInput
               placeholder="Enter your mother's Nationality"
               autoCapitalize="none"
@@ -164,7 +176,7 @@ function ParentalInfo({ navigation }) {
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Mother's NID no.  (Optional)   </Text>
+            <Text style={styles.InputTitle}>Mother's NID no.  (Optional) (মায়ের এন আই ডি নং )  </Text>
             <TextInput
               placeholder="Enter your  mother's NID no. "
               autoCapitalize="none"
@@ -172,7 +184,19 @@ function ParentalInfo({ navigation }) {
               returnKeyLabel="next"
             />
           </View>
-          <Text style={{
+              </View>
+              </View>
+          
+          
+              <View style={{
+            flexDirection: 'row',
+            flex: 1
+          }}>
+            <View style={{
+              padding: 10,
+              flex: .5
+            }}>
+               <Text style={{
             fontWeight: "bold",
             padding: 10,
            
@@ -189,7 +213,7 @@ function ParentalInfo({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>Profession  </Text>
+          <Text style={styles.InputTitle}>Profession (পেশা) </Text>
             <TextInput
               placeholder="Enter your Legal Gurdian's Profession"
               autoCapitalize="none"
@@ -199,7 +223,7 @@ function ParentalInfo({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Nationality  </Text>
+            <Text style={styles.InputTitle}>Nationality (জাতীয়তা) </Text>
             <TextInput
               placeholder="Enter your Legal Gurdian's  Nationality"
               autoCapitalize="none"
@@ -220,8 +244,17 @@ function ParentalInfo({ navigation }) {
             fontWeight: "bold",
             paddingBottom: 10,
             paddingLeft: 10,
-            padding: 20
+          
           }}>Note: This Document is Mandatory to submit while enrollment</Text>
+              </View>
+              <View style={{
+              padding: 10,
+              flex: .5
+            }}>
+              </View>
+              </View>
+          
+         
           
           <Button
             label="Save and Continue"
@@ -257,7 +290,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   InputView: {
-    width: "40%",
+    width: "90%",
     padding: 10
   },
 });

@@ -246,6 +246,14 @@ const styles = StyleSheet.create({
     flex: 0.2,
     backgroundColor: "gray",
   },
+  dropdown: {
+    height: 50,
+    width: 400,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    padding: 10,
+  },
   sidemenu: {
     color: "black",
     fontWeight: "bold",

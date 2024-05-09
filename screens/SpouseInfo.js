@@ -86,6 +86,14 @@ function SpouseInfo({ navigation }) {
           
           
           <View style={styles.InputView}>
+          <label>
+          Select marital Status
+      <select name="selectedFruit">
+        <option value="apple">Single</option>
+        <option value="banana">Married</option>
+       
+      </select>
+    </label>
           <Text style={styles.InputTitle}> Select marital Status</Text>
             <TextInput
               placeholder="Enter your Status"
