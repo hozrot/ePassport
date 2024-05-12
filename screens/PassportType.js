@@ -35,8 +35,34 @@ export default function PassportType({ navigation }) {
       value: 'official'
     }
   ]), []);
+  const supportingDoc = useMemo(() => ([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: 'GO',
+      value: 'go '
+    },
+    {
+      id: '2',
+      label: 'NOC',
+      value: 'noc'
+    }
+  ]), []);
+  const payment = useMemo(() => ([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: 'Yes',
+      value: 'yes '
+    },
+    {
+      id: '2',
+      label: 'NO',
+      value: 'no'
+    }
+  ]), []);
 
   const [selectedId, setSelectedId] = useState();
+  const [selectedDoc, setSelectedDoc] = useState();
+  const [selectedPayment, setSelectedPayment] = useState();
 
   return (
     <ScrollView>
@@ -150,11 +176,29 @@ export default function PassportType({ navigation }) {
                 paddingBottom:10,
                 paddingTop:10
               }}> ** Provide NOC/ Student Id / Tread Licence According to your profession  </Text>}
-            {selectedId == 2 && <Text style={{
+            {selectedId == 2 &&<View> <Text style={{
                 fontWeight: "bold",
                 paddingBottom:10,
                 paddingTop:10
-              }}> ** Provide NOC or GO </Text>}
+              }}> Select Available Suporting Document  </Text> <RadioGroup
+                radioButtons={supportingDoc}
+                onPress={setSelectedDoc}
+                selectedId={selectedDoc}
+                layout='row'
+                selected
+              />
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom:10,
+                paddingTop:10
+              }}>Is a Payment required for the Official Passport   </Text>
+              <RadioGroup
+                radioButtons={payment}
+                onPress={setSelectedPayment}
+                selectedId={selectedPayment}
+                layout='row'
+                selected
+              /></View>}
             <Button
               label="Save and Continue"
               onPress={() => navigation.navigate("PersonalInfo")}

@@ -27,10 +27,10 @@ function HomePage({ navigation }) {
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.menuText}>Apply Online  </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <Text style={styles.menuText}>5 Step to e-Pasport  </Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
+        </TouchableOpacity> */}
+        {/* <TouchableOpacity>
           <Text style={styles.menuText}> Urgent Application   </Text>
         </TouchableOpacity>
         <TouchableOpacity>
@@ -38,7 +38,7 @@ function HomePage({ navigation }) {
         </TouchableOpacity>
         <TouchableOpacity>
           <Text style={styles.menuText}> Passport Fees  </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <Text style={styles.menuText}>Sign in </Text>
         </TouchableOpacity>

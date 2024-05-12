@@ -42,9 +42,9 @@ function ApplicationSummary({ navigation }) {
 
         <View
           style={{
-            height: 500,
+           
             width: "60%",
-            backgroundColor: "gray",
+            backgroundColor: "#E3F2FD",
             padding: 30,
           }}
         >
@@ -56,31 +56,412 @@ function ApplicationSummary({ navigation }) {
             <View
               style={{
                 flex: 0.3,
-                
               }}
             >
-              <Text  style={{
-            color: "#223e4b",
-            fontSize: 18,
-            marginBottom: 16,
-           
-          }}>Passport Type: </Text>
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Passport Type:{" "}
+              </Text>
             </View>
             <View
               style={{
                 flex: 0.7,
-                padding: 20,
               }}
             >
-              <Text  style={{
-            color: "#223e4b",
-            fontSize: 18,
-           
-            fontWeight: "bold",
-          }}>Ordinary passport </Text>
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                Ordinary passport{" "}
+              </Text>
             </View>
           </View>
-          
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Applicant Name:{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                Md Hozrot Ali{" "}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Date of Birth
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                24 April 1993{" "}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Online Registration ID{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                OID1254587859{" "}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Regional Passport Office{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                Passport Office: Agargaon, Dhaka{" "}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Passport Pages:{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                48 Pages
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Validity:{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                10 Years{" "}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Delivery Service :{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                Regular{" "}
+              </Text>
+            </View>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
+            <View
+              style={{
+                flex: 0.3,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+                  marginBottom: 16,
+                }}
+              >
+                Payment Type{" "}
+              </Text>
+            </View>
+            <View
+              style={{
+                flex: 0.7,
+              }}
+            >
+              <Text
+                style={{
+                  color: "#223e4b",
+                  fontSize: 18,
+
+                  fontWeight: "bold",
+                }}
+              >
+                Offline{" "}
+              </Text>
+            </View>
+          </View>
+
+          <View
+            style={{
+              flex: 1,
+
+              padding: 20,
+              gap: 10,
+            }}
+          >
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 18,
+
+                fontWeight: "bold",
+              }}
+            >
+              List of required Document:(According to your Application)
+            </Text>
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 16,
+
+                fontWeight: "bold",
+              }}
+            >
+              1. Printed Application Summary{" "}
+            </Text>
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 16,
+
+                fontWeight: "bold",
+              }}
+            >
+              2. Payment Slip{" "}
+            </Text>
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 16,
+
+                fontWeight: "bold",
+              }}
+            >
+              3.Printed Application form{" "}
+            </Text>
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 16,
+
+                fontWeight: "bold",
+              }}
+            >
+              4.Identity Document: NID Card{" "}
+            </Text>
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 16,
+
+                fontWeight: "bold",
+              }}
+            >
+              5. Marriage Certification{" "}
+            </Text>
+            <Text
+              style={{
+                color: "#223e4b",
+                fontSize: 20,
+
+                fontWeight: "bold",
+              }}
+            >
+              Passport Price : 6325 Taka (including VAT)
+            </Text>
+          </View>
+         
         </View>
 
         {/* <Button

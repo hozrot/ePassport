@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useState } from "react";
 import {
   View,
   StyleSheet,
@@ -10,11 +10,21 @@ import {
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import Banner from "../component/Banner";
-
+import { Dropdown } from "react-native-element-dropdown";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
+
+const status = [
+  { status: "Married", statusId: "1" },
+  { status: "Single", statusId: "2" },
+  { status: "Divorced ", statusId: "3" },
+];
+
 function SpouseInfo({ navigation }) {
+
+  const [statusId, setStatusId] = useState(null);
+const [statusFocus, setstatusFocus] = useState(false);
   return (
     <ScrollView>
       <Header />
@@ -86,24 +96,39 @@ function SpouseInfo({ navigation }) {
           
           
           <View style={styles.InputView}>
-          <label>
-          Select marital Status
+          {/* <label>
+          Select marital Status  
       <select name="selectedFruit">
         <option value="apple">Single</option>
         <option value="banana">Married</option>
        
       </select>
-    </label>
+    </label> */}
           <Text style={styles.InputTitle}> Select marital Status</Text>
-            <TextInput
-              placeholder="Enter your Status"
-              autoCapitalize="none"
-              returnKeyType="next"
-              returnKeyLabel="next"
-            />
+          <Dropdown
+                  style={[
+                    styles.dropdown,
+                    statusFocus && { borderColor: "blue" },
+                  ]}
+                  data={status}
+                  labelField="status"
+                  valueField="statusId"
+                  placeholder={!statusFocus ? "Select marital Status" : "..."}
+                  value={statusId}
+                  onFocus={() => setstatusFocus(true)}
+                  onBlur={() => setstatusFocus(false)}
+                  onChange={(item) => {
+                    setStatusId(item.statusId);
+                    setstatusFocus(false);
+                  }}
+                />
 
           </View>
-          <View style={styles.InputView}>
+          
+              
+                {statusId == 1 && (
+                 <View>
+                  <View style={styles.InputView}>
           <Text style={styles.InputTitle}> Spouse's Name</Text>
             <TextInput
               placeholder="Enter your Spouse's   name"
@@ -141,6 +166,10 @@ function SpouseInfo({ navigation }) {
               returnKeyLabel="next"
             />
           </View>
+                 </View>
+                )}
+           
+          
          
          
           <Button
@@ -179,6 +208,14 @@ const styles = StyleSheet.create({
   InputView: {
     width: "40%",
     padding: 10
+  },
+  dropdown: {
+    height: 50,
+    width: 400,
+    borderColor: "gray",
+    borderWidth: 0.5,
+    borderRadius: 8,
+    padding: 10,
   },
 });
 export default SpouseInfo;
