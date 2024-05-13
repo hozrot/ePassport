@@ -15,24 +15,39 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
+
+
+
 function IdDoc({ navigation }) {
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
-      label: 'Yes, I have a Machine Readable Passport(MRP)',
-      value: 'ordinary '
+      label: 'Yes,I have a Machine Readable Passport(MRP)',
+
     },
     {
       id: '2',
-      label: 'Yes, I have an ePassport (ePP)',
-      value: 'official'
+      label: 'Yes,I have an ePassport (ePP)',
+
     },
     {
       id: '3',
-      label: 'No, I want to have a passport for the first time',
-      value: 'official'
+      label: 'No,I Applied for the first time',
+
     }
   ]), []);
+  const selection = useMemo(() => ([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: 'Yes',
+    },
+    {
+      id: '2',
+      label: 'No',
+    },
+  ]), []);
+
+  const [selecteOption, setSelecteOption] = useState();
 
   const [selectedId, setSelectedId] = useState();
 
@@ -159,7 +174,7 @@ function IdDoc({ navigation }) {
         No
         </label>
           </View> */}
-         
+
           {/* {value == "mrp" && <Text style={{
             fontWeight: "bold",
             paddingBottom: 10,
@@ -172,49 +187,102 @@ function IdDoc({ navigation }) {
             layout='row'
           />
 
-          {selectedId == 1 && 
-          <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>MRP no. </Text>
-            <TextInput
-              placeholder="Enter your Passport (MRP) number"
-              autoCapitalize="none"
-              returnKeyType="next"
-              returnKeyLabel="next"
-            />
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 10
-          }}> ** Provide Your MRP data and Bring that passport while Enrollment  </Text>
+          {selectedId == 1 &&
+            <View style={styles.InputView}>
+              <Text style={styles.InputTitle}> Reissue Reason </Text>
+              <TextInput
+                placeholder="Enter your reason of reissue"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+              <Text style={styles.InputTitle}>MRP no. </Text>
+              <TextInput
+                placeholder="Enter your Passport (MRP) number"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+                paddingTop: 10
+              }}> ** Provide Your MRP data and Bring that passport while Enrollment  </Text>
+              <Text style={styles.InputTitle}>MRP issue Date </Text>
+              <TextInput
+                placeholder="Enter your issue date"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+              <Text style={styles.InputTitle}>MRP expiration Date </Text>
+              <TextInput
+                placeholder="Enter your Passport (ePP) expiration date"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
 
-          </View>
-          
-          
-          }
-         {selectedId == 2 && 
-          <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>ePP no. </Text>
-            <TextInput
-              placeholder="Enter your Passport (ePP) number"
-              autoCapitalize="none"
-              returnKeyType="next"
-              returnKeyLabel="next"
-            />
-            <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 10
-          }}> ** Provide Your ePP data and Bring that passport while Enrollment  </Text>
 
-          </View>
-          
-          
+            </View>
+
+
           }
-          {selectedId == 3 && <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 10
-          }}> **  Do you have passport of other Countries </Text>}
+          {selectedId == 2 &&
+            <View style={styles.InputView}>
+              <Text style={styles.InputTitle}> Reissue Reason </Text>
+              <TextInput
+                placeholder="Enter your reason of reissue"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+              <Text style={styles.InputTitle}>ePP no. </Text>
+              <TextInput
+                placeholder="Enter your Passport (ePP) number"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom: 10,
+                paddingTop: 10
+              }}> ** Provide Your ePP data and Bring that passport while Enrollment  </Text>
+              <Text style={styles.InputTitle}>ePP issue Date </Text>
+              <TextInput
+                placeholder="Enter your issue date"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+              <Text style={styles.InputTitle}>ePP expiration Date </Text>
+              <TextInput
+                placeholder="Enter your Passport (ePP) expiration date"
+                autoCapitalize="none"
+                returnKeyType="next"
+                returnKeyLabel="next"
+              />
+
+
+            </View>
+
+
+          }
+          {selectedId == 3 && <View style={styles.InputView}>
+            <Text style={{
+              fontWeight: "bold",
+              paddingBottom: 10,
+              paddingTop: 10
+            }}> **  Do you have passport of other Countries </Text>
+            <RadioGroup
+              radioButtons={selection}
+              onPress={setSelecteOption}
+              selectedId={selecteOption}
+              layout='row'
+
+            />
+          </View>}
 
           <Text style={{
             fontWeight: "bold",
@@ -254,7 +322,7 @@ const styles = StyleSheet.create({
     flex: 0.2,
     backgroundColor: "gray",
   },
-  InputTitle:{
+  InputTitle: {
     fontWeight: "bold",
     paddingBottom: 10,
   },

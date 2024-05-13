@@ -1,4 +1,4 @@
-import React,{ useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import RadioGroup from 'react-native-radio-buttons-group';
 import {
   View,
@@ -17,7 +17,7 @@ import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 import { RadioButton } from "react-native-ui-lib";
 
-export default function PassportOption({navigation}) {
+export default function PassportOption({ navigation }) {
   const pageButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -26,6 +26,7 @@ export default function PassportOption({navigation}) {
     {
       id: '2',
       label: '64 Page',
+      disabled: 'true'
     },
   ]), []);
   const validityButtons = useMemo(() => ([
@@ -43,9 +44,9 @@ export default function PassportOption({navigation}) {
   const [validityId, setValidityId] = useState();
   return (
     <ScrollView>
-    <Header />
+      <Header />
 
-    <View style={{
+      <View style={{
         paddingLeft: 200
       }}>
         <Text style={{
@@ -65,25 +66,25 @@ export default function PassportOption({navigation}) {
           <TouchableOpacity onPress={() => navigation.navigate("PassportType")} >
             <Text style={styles.sidemenu}>Passport Type </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("PersonalInfo")}>
+          <TouchableOpacity onPress={() => navigation.navigate("PersonalInfo")}>
             <Text style={styles.sidemenu}>Parsonal Information  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("AddressInfo")}>
+          <TouchableOpacity onPress={() => navigation.navigate("AddressInfo")}>
             <Text style={styles.sidemenu}>Address </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("IdDoc")}>
+          <TouchableOpacity onPress={() => navigation.navigate("IdDoc")}>
             <Text style={styles.sidemenu}>ID Document  </Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("ParentalInfo")}> 
+          <TouchableOpacity onPress={() => navigation.navigate("ParentalInfo")}>
             <Text style={styles.sidemenu}>Parental Information  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  onPress={() => navigation.navigate("SpouseInfo")}>
+          <TouchableOpacity onPress={() => navigation.navigate("SpouseInfo")}>
             <Text style={styles.sidemenu}>Spouse Information  </Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("EmergencyContact")} >
             <Text style={styles.sidemenu}>Emergency Contact  </Text>
           </TouchableOpacity>
-          <TouchableOpacity  style={{
+          <TouchableOpacity style={{
             backgroundColor: 'gray',
           }} >
             <Text style={styles.sidemenu}>Passport Option </Text>
@@ -107,18 +108,18 @@ export default function PassportOption({navigation}) {
               padding: 20
             }}
           >
-         Passport Option 
+            Passport Option
           </Text>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Passport Page </Text>
-          <RadioGroup
-            radioButtons={pageButtons}
-            onPress={setPageId}
-            selectedId={pageId}
-            layout='row'
-            disabled={1}
-          />
-        {/* <RadioButton radioButtons={pageButtons}
+            <Text style={styles.InputTitle}> Passport Page </Text>
+            <RadioGroup
+              radioButtons={pageButtons}
+              onPress={setPageId}
+              selectedId={pageId}
+              layout='row'
+
+            />
+            {/* <RadioButton radioButtons={pageButtons}
             onPress={setPageId}
             selectedId={pageId}
             layout='row'
@@ -127,17 +128,17 @@ export default function PassportOption({navigation}) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Validity </Text>
-          <RadioGroup
-            radioButtons={validityButtons}
-            onPress={setValidityId}
-            selectedId={validityId}
-            layout='row'
-            selected
-          />
+            <Text style={styles.InputTitle}> Validity </Text>
+            <RadioGroup
+              radioButtons={validityButtons}
+              onPress={setValidityId}
+              selectedId={validityId}
+              layout='row'
+
+            />
           </View>
-        
-{validityId==1 &&  <Text
+
+          {validityId == 1 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -145,9 +146,9 @@ export default function PassportOption({navigation}) {
               padding: 20
             }}
           >
-         Passport Price :  4,025  Taka 
+            Passport Price :  4,025  Taka
           </Text>}
-          {validityId==2 &&  <Text
+          {validityId == 2 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -155,45 +156,45 @@ export default function PassportOption({navigation}) {
               padding: 20
             }}
           >
-         Passport Price :  5,750 Taka 
+            Passport Price :  5,750 Taka
           </Text>}
-         
-         
+
+
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("DelevaryOption")} 
+            onPress={() => navigation.navigate("DelevaryOption")}
           />
 
         </View>
       </View>
-    <Footer />
-  </ScrollView>
+      <Footer />
+    </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
-    Container: {
-      height: 400,
-      justifyContent: "flex-start",
-      alignItems: "center",
-    },
-    LogIn: {
-      flex: 0.2,
-      backgroundColor: "gray",
-    },
-    sidemenu: {
-      color: "black",
-      fontWeight: "bold",
-      fontSize: 16,
-      marginTop: 10,
-      padding: 10
-    },
-    InputTitle:{
-      fontWeight: "bold",
-      paddingBottom: 10,
-    },
-    InputView: {
-      width: "40%",
-      padding: 10
-    },
-  });
+  Container: {
+    height: 400,
+    justifyContent: "flex-start",
+    alignItems: "center",
+  },
+  LogIn: {
+    flex: 0.2,
+    backgroundColor: "gray",
+  },
+  sidemenu: {
+    color: "black",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginTop: 10,
+    padding: 10
+  },
+  InputTitle: {
+    fontWeight: "bold",
+    paddingBottom: 10,
+  },
+  InputView: {
+    width: "40%",
+    padding: 10
+  },
+});

@@ -51,18 +51,17 @@ function HomePage({ navigation }) {
         <TouchableOpacity>
           <Text style={styles.menuText}>Contact </Text>
         </TouchableOpacity>
-       
+
       </View>
-      
+
       <View
-        style={{ justifyContent: "center", alignItems: "center", height: 200 }}
+        style={{ justifyContent: "center", alignItems: "center", height: 100 }}
       >
         <Text
           style={{
             color: "blue",
             fontWeight: "bold",
             fontSize: 30,
-            marginTop: 10,
           }}
         >
           5 Step to Apply Passport
@@ -74,52 +73,107 @@ function HomePage({ navigation }) {
           height: 250,
         }}
       >
-        <TouchableOpacity style={styles.five}>
-          <MaterialCommunityIcons
-            name={"magnify-expand"}
-            size={80}
-            color={"green"}
-          />
-          <Text style={styles.menuText}>Check availability</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.five}>
-          <MaterialCommunityIcons
-            name={"playlist-edit"}
-            size={80}
-            color={"green"}
-          />
-          <Text style={styles.menuText}>e-Passport application </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.five}>
-          <MaterialCommunityIcons
-            name={"cash-check"}
-            size={80}
-            color={"green"}
-          />
-          <Text style={styles.menuText}> Pay passport fees </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.five}>
-          <View
-            style={{
-              flexDirection: "row",
-            }}
-          >
+        <TouchableOpacity style={{
+          backgroundColor: "#FFFFFF",
+          flex: 0.3,
+          height: 150,
+          margin: 10,
+          padding: 10,
+        }}>
+          <View style={{ justifyContent: 'flex-start', alignItems: 'flex-start', alignContent: 'flex-start' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>1</Text>
+          </View>
+          <View style={styles.five}>
             <MaterialCommunityIcons
-              name={"fingerprint"}
-              size={50}
+              name={"magnify-expand"}
+              size={80}
               color={"green"}
             />
-            <MaterialCommunityIcons name={"camera"} size={50} color={"green"} />
+            <Text style={styles.menuText}>Check availability</Text>
           </View>
-          <Text style={styles.menuText}>Biometric enrolment</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.five}>
-          <MaterialCommunityIcons
-            name={"passport-biometric"}
-            size={80}
-            color={"green"}
-          />
-          <Text style={styles.menuText}>Collect your e-Passport</Text>
+        <TouchableOpacity style={{
+          backgroundColor: "#FFFFFF",
+          flex: 0.3,
+          height: 150,
+          margin: 10,
+          padding: 10,
+        }}>
+          <View style={{ justifyContent: 'flex-start', alignItems: 'flex-start', alignContent: 'flex-start' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>2</Text>
+          </View>
+          <View style={styles.five}>
+            <MaterialCommunityIcons
+              name={"playlist-edit"}
+              size={80}
+              color={"green"}
+            />
+            <Text style={styles.menuText}>e-Passport application </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={{
+          backgroundColor: "#FFFFFF",
+          flex: 0.3,
+          height: 150,
+          margin: 10,
+          padding: 10,
+        }}>
+          <View style={{ justifyContent: 'flex-start', alignItems: 'flex-start', alignContent: 'flex-start' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>3</Text>
+          </View>
+          <View style={styles.five}>
+            <MaterialCommunityIcons
+              name={"cash-check"}
+              size={80}
+              color={"green"}
+            />
+            <Text style={styles.menuText}> Pay passport fees </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={{
+          backgroundColor: "#FFFFFF",
+          flex: 0.3,
+          height: 150,
+          margin: 10,
+          padding: 10,
+        }}>
+          <View style={{ justifyContent: 'flex-start', alignItems: 'flex-start', alignContent: 'flex-start' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>4</Text>
+          </View>
+          <View style={styles.five}>
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
+              <MaterialCommunityIcons
+                name={"fingerprint"}
+                size={50}
+                color={"green"}
+              />
+              <MaterialCommunityIcons name={"camera"} size={50} color={"green"} />
+            </View>
+            <Text style={styles.menuText}>Biometric enrolment</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity style={{
+          backgroundColor: "#FFFFFF",
+          flex: 0.3,
+          height: 150,
+          margin: 10,
+          padding: 10,
+        }}>
+          <View style={{ justifyContent: 'flex-start', alignItems: 'flex-start', alignContent: 'flex-start' }}>
+            <Text style={{ fontSize: 24, fontWeight: 'bold' }}>5</Text>
+          </View>
+          <View style={styles.five}>
+            <MaterialCommunityIcons
+              name={"passport-biometric"}
+              size={80}
+              color={"green"}
+            />
+            <Text style={styles.menuText}>Collect your e-Passport</Text>
+          </View>
         </TouchableOpacity>
       </View>
       {/* <View style={styles.ContentBlock}>
@@ -334,7 +388,7 @@ function HomePage({ navigation }) {
         style={{
           flexDirection: "row",
           justifyContent: "space-evenly",
-          height: 400,
+          height: 300,
         }}
       >
         <View style={{ justifyContent: "center", alignItems: "center" }}>

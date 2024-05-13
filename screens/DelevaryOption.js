@@ -19,19 +19,30 @@ function DelevaryOption({ navigation }) {
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
-      label: 'Regular',
+      label: 'Regular (Within 15 Working day)',
     },
     {
       id: '2',
-      label: 'Express',
+      label: 'Express (Within 7 Working day)',
     },
     {
       id: '3',
-      label: 'Super Express',
+      label: 'Super Express (Within 2 Working day)',
     }
+  ]), []);
+  const paymentButtons = useMemo(() => ([
+    {
+      id: '1', // acts as primary key, should be unique and non-empty string
+      label: 'Online',
+    },
+    {
+      id: '2',
+      label: 'Offline',
+    },
   ]), []);
 
   const [selectedId, setSelectedId] = useState();
+  const [selectePayment, setSelectePayment] = useState();
   return (
     <ScrollView>
       <Header />
@@ -88,7 +99,7 @@ function DelevaryOption({ navigation }) {
 
         <View style={{
           width: "80%",
-          paddingBottom: 10
+          padding: 20
         }}>
           <Text
             style={{
@@ -106,7 +117,9 @@ function DelevaryOption({ navigation }) {
               radioButtons={radioButtons}
               onPress={setSelectedId}
               selectedId={selectedId}
-              layout='row'
+              containerStyle={[styles.radio]}
+              layout="row"
+
             />
 
           </View>
@@ -119,10 +132,10 @@ function DelevaryOption({ navigation }) {
               padding: 20
             }}
           >
-            Passport Price : 5,750 Taka 
+            Passport Price : 5,750 Taka
           </Text>
           }
-           {selectedId == 2 && <Text
+          {selectedId == 2 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -130,10 +143,10 @@ function DelevaryOption({ navigation }) {
               padding: 20
             }}
           >
-            Passport Price : 8,050 Taka 
+            Passport Price : 8,050 Taka
           </Text>
           }
-           {selectedId == 3 && <Text
+          {selectedId == 3 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -141,10 +154,19 @@ function DelevaryOption({ navigation }) {
               padding: 20
             }}
           >
-            Passport Price : 10,350 Taka 
+            Passport Price : 10,350 Taka
           </Text>
           }
+          <View style={styles.InputView}>
+            <Text style={styles.InputTitle}> Payment Method </Text>
+            <RadioGroup
+              radioButtons={paymentButtons}
+              onPress={setSelectePayment}
+              selectedId={selectePayment}
+              layout='row'
 
+            />
+          </View>
 
           <Button
             label="Save and Continue"
@@ -183,5 +205,8 @@ const styles = StyleSheet.create({
     width: "40%",
     padding: 10
   },
+  radio: {
+
+  }
 });
 export default DelevaryOption;
