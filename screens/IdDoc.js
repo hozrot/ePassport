@@ -18,7 +18,9 @@ import { Entypo as Icon } from "@expo/vector-icons";
 
 
 
-function IdDoc({ navigation }) {
+function IdDoc({ navigation,route }) {
+  const yearofage = route.params;
+  
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -302,7 +304,7 @@ function IdDoc({ navigation }) {
           </View>
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("ParentalInfo")}
+            onPress={() => navigation.navigate("ParentalInfo",yearofage)}
           />
 
         </View>

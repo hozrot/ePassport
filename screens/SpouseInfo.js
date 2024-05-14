@@ -21,7 +21,8 @@ const status = [
   { status: "Divorced ", statusId: "3" },
 ];
 
-function SpouseInfo({ navigation }) {
+function SpouseInfo({ navigation,route }) {
+  const yearofage = route.params;
 
   const [statusId, setStatusId] = useState(null);
 const [statusFocus, setstatusFocus] = useState(false);
@@ -104,7 +105,7 @@ const [statusFocus, setstatusFocus] = useState(false);
        
       </select>
     </label> */}
-          <Text style={styles.InputTitle}> Select marital Status</Text>
+          <Text style={styles.InputTitle}> Select marital Status (বৈবাহিক অবস্থা )</Text>
           <Dropdown
                   style={[
                     styles.dropdown,
@@ -129,7 +130,7 @@ const [statusFocus, setstatusFocus] = useState(false);
                 {statusId == 1 && (
                  <View>
                   <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Spouse's Name</Text>
+          <Text style={styles.InputTitle}> Spouse's Name (স্বামী/ স্ত্রীর নাম )</Text>
             <TextInput
               placeholder="Enter your Spouse's   name"
               autoCapitalize="none"
@@ -139,7 +140,7 @@ const [statusFocus, setstatusFocus] = useState(false);
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>Profession  </Text>
+          <Text style={styles.InputTitle}>Profession (পেশা) </Text>
             <TextInput
               placeholder="Enter your Spouse's Profession"
               autoCapitalize="none"
@@ -149,7 +150,7 @@ const [statusFocus, setstatusFocus] = useState(false);
 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Nationality  </Text>
+            <Text style={styles.InputTitle}>Nationality (জাতীয়তা) </Text>
             <TextInput
               placeholder="Enter your Spouse's Nationality"
               autoCapitalize="none"
@@ -158,7 +159,7 @@ const [statusFocus, setstatusFocus] = useState(false);
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Spouse's NID no. (Optional)  </Text>
+            <Text style={styles.InputTitle}>Spouse's NID no. (Optional)(স্বামী / স্ত্রীর এন আই ডি নং)  </Text>
             <TextInput
               placeholder="Enter your  father's NID no. "
               autoCapitalize="none"
@@ -174,7 +175,7 @@ const [statusFocus, setstatusFocus] = useState(false);
          
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("EmergencyContact")}
+            onPress={() => navigation.navigate("EmergencyContact",yearofage)}
           />
 
         </View>

@@ -199,9 +199,10 @@ export default function PassportType({ navigation }) {
                 layout='row'
                 selected
               /></View>}
+              <Text>{selectedId}</Text>
             <Button
               label="Save and Continue"
-              onPress={() => navigation.navigate("PersonalInfo")}
+              onPress={() => navigation.navigate("PersonalInfo",selectedId)}
             />
 
         </View>

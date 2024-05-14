@@ -15,7 +15,9 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
-function DelevaryOption({ navigation }) {
+function DelevaryOption({ navigation,route }) {
+
+  const yearofage = route.params;
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -112,7 +114,7 @@ function DelevaryOption({ navigation }) {
             Delivary Option
           </Text>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}> Delivary Type  </Text>
+            <Text style={styles.InputTitle}> Delivary Type (সরবরাহের ধরণ) </Text>
             <RadioGroup
               radioButtons={radioButtons}
               onPress={setSelectedId}
@@ -158,28 +160,27 @@ function DelevaryOption({ navigation }) {
           </Text>
           }
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}> Payment Method </Text>
+            <Text style={styles.InputTitle}> Payment Method (ফি পরিশোধের মাধ্যম) </Text>
             <RadioGroup
               radioButtons={paymentButtons}
               onPress={setSelectePayment}
               selectedId={selectePayment}
               layout='row'
-
             />
           </View>
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("ApplicationSummary")}
+            onPress={() => navigation.navigate("ApplicationSummary",yearofage)}
           />
 
         </View>
       </View>
-      <Footer />
+      <Footer/>
     </ScrollView>
   );
 }
-
+ 
 const styles = StyleSheet.create({
   Container: {
     height: 400,

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRoute } from "react";
 import {
   View,
   StyleSheet,
@@ -49,7 +49,8 @@ const year = [
   { year: "1985", yearId: "7" },
 ];
 
-export default function PersonalInfo({ navigation }) {
+export default function PersonalInfo({ navigation, route }) {
+  const PassportType = route.params;
   const [date, setDate] = useState(null);
   const [month, setMonth] = useState(null);
 
@@ -85,7 +86,7 @@ export default function PersonalInfo({ navigation }) {
           }}
         >
           {" "}
-          Please fill in all required information step by step{" "}
+          Please fill in all required information step by step {PassportType}
         </Text>
       </View>
 
@@ -230,7 +231,7 @@ export default function PersonalInfo({ navigation }) {
             >
               Full Name (সম্পুর্ণ নাম){" "}
             </Text>
-           
+
             <TextInput
               placeholder="Enter your Full name"
               autoCapitalize="none"
@@ -531,6 +532,15 @@ export default function PersonalInfo({ navigation }) {
               >
                 Select Date of Birth (জন্মতারিখ ){" "}
               </Text>
+              {/* <label for="start">DOB</label>
+
+              <input
+                type="date"
+                id="start"
+                name="trip-start"
+                min="1900-01-01"
+                max="2024-12-31"
+              /> */}
               <View
                 style={{
                   justifyContent: "space-between",
@@ -718,7 +728,7 @@ export default function PersonalInfo({ navigation }) {
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("AddressInfo")}
+            onPress={() => navigation.navigate("AddressInfo",yearId)}
           />
         </View>
       </View>

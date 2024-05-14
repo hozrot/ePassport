@@ -14,7 +14,10 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
-function ApplicationSummary({ navigation }) {
+function ApplicationSummary({ navigation ,route}) {
+
+  const yearofage = route.params;
+
   return (
     <ScrollView>
       <Header />
@@ -430,7 +433,7 @@ function ApplicationSummary({ navigation }) {
             >
               3.Printed Application form{" "}
             </Text>
-            <Text
+            {/* <Text
               style={{
                 color: "#223e4b",
                 fontSize: 16,
@@ -439,7 +442,61 @@ function ApplicationSummary({ navigation }) {
               }}
             >
               4.Identity Document: NID Card{" "}
-            </Text>
+            </Text> */}
+            <View>
+                {" "}
+                {yearofage == 1 && (
+                  <Text
+                    style={{
+                      color: "#223e4b",
+                      fontSize: 16,
+                      fontWeight: "bold",
+                    }}
+                  >
+                   4. Need to submit 3R size Lab Print
+                    (gray Background) Picture while Enrolment{" "}
+                  </Text>
+                )}
+                {yearofage == 2 && (
+                  <Text
+                    style={{
+                      color: "#223e4b",
+                      fontSize: 16,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {" "}
+                  4. Need to
+                    submit BRC while Enrolment{" "}
+                  </Text>
+                )}
+                {yearofage == 3 && (
+                  <Text
+                    style={{
+                      color: "#223e4b",
+                      fontSize: 16,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {" "}
+                   4. Need to
+                    submit BRC or NID while Enrolment{" "}
+                  </Text>
+                )}
+                {yearofage >= 4 && (
+                  <Text
+                    style={{
+                      color: "#223e4b",
+                      fontSize: 16,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {" "}
+                   4. Need to submit NID while
+                    Enrolment{" "}
+                  </Text>
+                )}
+              </View>
             <Text
               style={{
                 color: "#223e4b",
