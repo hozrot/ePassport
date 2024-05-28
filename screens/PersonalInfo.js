@@ -50,7 +50,7 @@ const year = [
 ];
 
 export default function PersonalInfo({ navigation, route }) {
-  const PassportType = route.params;
+  const {PassportType,selectedDoc,selectedPayment} = route.params;
   const [date, setDate] = useState(null);
   const [month, setMonth] = useState(null);
 
@@ -71,6 +71,8 @@ export default function PersonalInfo({ navigation, route }) {
   return (
     <ScrollView>
       <Header />
+      <Text> option: {selectedPayment}</Text>
+      <Text> option2: {selectedDoc}</Text>
       <MenuBar />
       <View
         style={{
@@ -731,6 +733,7 @@ export default function PersonalInfo({ navigation, route }) {
             onPress={() => navigation.navigate("AddressInfo",yearId)}
           />
         </View>
+        <Text>test data: {yearId}</Text>
       </View>
 
       <Footer />

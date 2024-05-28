@@ -306,7 +306,7 @@ function IdDoc({ navigation,route }) {
             label="Save and Continue"
             onPress={() => navigation.navigate("ParentalInfo",yearofage)}
           />
-
+  <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />

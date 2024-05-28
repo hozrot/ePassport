@@ -14,18 +14,17 @@ import { Dropdown } from 'react-native-element-dropdown';
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 
-
 const relationship = [
   { relationship: 'Father', value2: '1' },
   { relationship: 'Uncle', value2: '2' },
   { relationship: 'Legal Guardian', value2: '3' },
 
-
 ];
 
 
 function EmergencyContact({ navigation,route }) {
-  const yearofage = route.params;
+  const {yearofage,statusId} = route.params;
+  
   
   const [value2, setValue2] = useState(null);
   const [isFocus2, setIsFocus2] = useState(false);
@@ -222,14 +221,14 @@ function EmergencyContact({ navigation,route }) {
             />
           </View>
           
-         
+          <Text>status: {statusId}</Text>
          
          
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("PassportOption",yearofage)}
+            onPress={() => navigation.navigate("PassportOption",{yearofage,statusId})}
           />
-
+          <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />

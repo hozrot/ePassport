@@ -18,8 +18,8 @@ import { Entypo as Icon } from "@expo/vector-icons";
 import { RadioButton } from "react-native-ui-lib";
 
 export default function PassportOption({ navigation, route }) {
-
-  const yearofage = route.params;
+  
+  const {yearofage,statusId} = route.params;
   const pageButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -160,12 +160,13 @@ export default function PassportOption({ navigation, route }) {
           >
             Passport Price :  5,750 Taka
           </Text>}
+          <Text>{statusId}</Text>
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("DelevaryOption",yearofage)}
+            onPress={() => navigation.navigate("DelevaryOption",{yearofage,statusId})}
           />
-
+  <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />

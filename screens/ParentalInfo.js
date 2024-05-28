@@ -261,7 +261,7 @@ function ParentalInfo({ navigation,route }) {
             label="Save and Continue"
             onPress={() => navigation.navigate("SpouseInfo",yearofage)}
           />
-
+          <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />

@@ -16,8 +16,8 @@ import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 function ApplicationSummary({ navigation ,route}) {
 
-  const yearofage = route.params;
-
+  const {yearofage,statusId} = route.params;
+ 
   return (
     <ScrollView>
       <Header />
@@ -497,16 +497,21 @@ function ApplicationSummary({ navigation ,route}) {
                   </Text>
                 )}
               </View>
-            <Text
-              style={{
-                color: "#223e4b",
-                fontSize: 16,
+              <View>
 
-                fontWeight: "bold",
-              }}
-            >
-              5. Marriage Certification{" "}
-            </Text>
+              {statusId == 1 && (
+                  <Text
+                    style={{
+                      color: "#223e4b",
+                      fontSize: 16,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {" "}
+                    5. Marriage Certification{" "}
+                  </Text>
+                )}
+           </View>
             <Text
               style={{
                 color: "#223e4b",
@@ -517,6 +522,7 @@ function ApplicationSummary({ navigation ,route}) {
             >
               Passport Price : 6325 Taka (including VAT)
             </Text>
+            {/* <Text>{yearofage}</Text> */}
           </View>
          
         </View>

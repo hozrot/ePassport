@@ -25,7 +25,7 @@ function SpouseInfo({ navigation,route }) {
   const yearofage = route.params;
 
   const [statusId, setStatusId] = useState(null);
-const [statusFocus, setstatusFocus] = useState(false);
+  const [statusFocus, setstatusFocus] = useState(false);
   return (
     <ScrollView>
       <Header />
@@ -171,13 +171,14 @@ const [statusFocus, setstatusFocus] = useState(false);
                 )}
            
           
-         
-         
+         {/* <Text>status: {statusId}</Text>
+         <Text>{yearofage}</Text> */}
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("EmergencyContact",yearofage)}
+            onPress={() => navigation.navigate("EmergencyContact",{yearofage,statusId})}
           />
-
+          
+         
         </View>
       </View>
       <Footer />

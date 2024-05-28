@@ -59,7 +59,7 @@ export default function PassportType({ navigation }) {
       value: 'no'
     }
   ]), []);
-
+  const [passportType, setPassportType] = useState();
   const [selectedId, setSelectedId] = useState();
   const [selectedDoc, setSelectedDoc] = useState();
   const [selectedPayment, setSelectedPayment] = useState();
@@ -163,6 +163,13 @@ export default function PassportType({ navigation }) {
                 paddingBottom:10
               }}> Select the Passport Type for your application!</Text>
 
+
+        {/* <label><input type="radio" name="passType1" checked={passportType} onChange={e => setPassportType(e.target.checked)}  /> Official </label>
+        <label><input type="radio" name="passType2" checked={passportType}  onChange={e => setPassportType(e.target.checked)} /> Ordinary Passport </label>
+
+        <Text> test :: {passportType}</Text>
+       */}
+
               <RadioGroup
                 radioButtons={radioButtons}
                 onPress={setSelectedId}
@@ -199,10 +206,10 @@ export default function PassportType({ navigation }) {
                 layout='row'
                 selected
               /></View>}
-              <Text>{selectedId}</Text>
+              {/* <Text>{selectedId}</Text> */}
             <Button
               label="Save and Continue"
-              onPress={() => navigation.navigate("PersonalInfo",selectedId)}
+              onPress={() => navigation.navigate("PersonalInfo",{selectedId, selectedDoc,selectedPayment})}
             />
 
         </View>

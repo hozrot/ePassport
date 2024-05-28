@@ -16,8 +16,7 @@ import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 function DelevaryOption({ navigation,route }) {
-
-  const yearofage = route.params;
+  const {yearofage,statusId} = route.params;
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -168,10 +167,12 @@ function DelevaryOption({ navigation,route }) {
               layout='row'
             />
           </View>
+          <Text>Status: {statusId}</Text>
+          <Text>Status: {yearofage}</Text>
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("ApplicationSummary",yearofage)}
+            onPress={() => navigation.navigate("ApplicationSummary",{yearofage,statusId})}
           />
 
         </View>

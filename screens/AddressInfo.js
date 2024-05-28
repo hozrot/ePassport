@@ -285,6 +285,7 @@ export default function AddressInfo({ navigation,route }) {
             label="Save and Continue"
             onPress={() => navigation.navigate("IdDoc",yearofage)}
           />
+          <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />
