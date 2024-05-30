@@ -19,7 +19,7 @@ import { RadioButton } from "react-native-ui-lib";
 
 export default function PassportOption({ navigation, route }) {
   
-  const {yearofage,statusId} = route.params;
+  const {yearofage,statusId,selectedId} = route.params;
   const pageButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -164,7 +164,7 @@ export default function PassportOption({ navigation, route }) {
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("DelevaryOption",{yearofage,statusId})}
+            onPress={() => navigation.navigate("DelevaryOption",{yearofage,statusId,selectedId})}
           />
   <Text>{yearofage}</Text>
         </View>

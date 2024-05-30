@@ -5,20 +5,26 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
+  Image,
   Button,
   StatusBar,
-  Linking
+  Linking,
+  Modal,
 } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 import Banner from "../component/Banner";
-import Modal from "react-native-modal";
+//import Modal from "react-native-modal";
 import TextTicker from "react-native-text-ticker";
 
 import MarqueeText from "react-native-marquee";
 function HomePage({ navigation }) {
+  const [open, setOpen] = useState(false);
+  function hanldeOnPress() {
+    setOpen(!open);
+  }
   return (
     <ScrollView style={styles.Container}>
       <Header />
@@ -48,240 +54,321 @@ function HomePage({ navigation }) {
         <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <Text style={styles.menuText}>Sing Up</Text>
         </TouchableOpacity> */}
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("StatusCheck")}>
           <Text style={styles.menuText}> Check Status </Text>
         </TouchableOpacity>
         <TouchableOpacity>
           <Text style={styles.menuText}>Contact </Text>
         </TouchableOpacity>
-        
       </View>
-      <View
-        style={{backgroundColor:"green"}}
-      >
-      <MarqueeText
+      <View style={{ backgroundColor: "green" }}>
+        <MarqueeText
           style={{ fontSize: 24 }}
-          speed={.25}
+          speed={0.25}
           marqueeOnStart={true}
           loop={true}
           delay={1000}
-         
         >
-          <TouchableOpacity   onPress={() => Linking.openURL("https://www.epassport.gov.bd/landing/notices/156")}>
-          <Text style={{color:'yellow'}} >   ** Enrolment of Biometric data for the Citizens older than 06 (six) years.
-        </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL("https://www.epassport.gov.bd/landing/notices/33")}>
-          <Text style={{color:'white'}} >  ** List of functional e-Passport Offices
-        </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL("https://www.epassport.gov.bd/landing/notices/151")}>
-          <Text style={{color:'blue'}} >  ** Temporary halt of 64 pages passport booklet delivery
-        </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL("https://www.epassport.gov.bd/landing/notices/34")}>
-          <Text style={{color:'white'}} >  ** Documents need to be carried while enrolment at Passport offices.
-        </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL("https://www.epassport.gov.bd/landing/notices/39")}>
-          <Text style={{color:'black'}} >  ** Guidelines for e-Passport application of government employees
-        </Text>
-        </TouchableOpacity>
-       </MarqueeText>
-     </View>
-      
-
-      <View
-        style={{ justifyContent: "center", alignItems: "center", height: 100,}}
-      >
-        <Text
-          style={{
-            color: "blue",
-            fontWeight: "bold",
-            fontSize: 30,
-          }}
-        >
-          5 Step to Apply Passport
-        </Text>
-        
-        {/* <TextTicker
-         style={{ fontSize: 24 }}
-         duration={30}
-         loop
-         bounce={false}
-         shouldAnimateTreshold={40}
-         repeatSpacer={50}
-         marqueeDelay={10}
-        >
-         test tet setst ets te
-        </TextTicker> */}
-        
-    
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                "https://www.epassport.gov.bd/landing/notices/156"
+              )
+            }
+          >
+            <Text style={{ color: "yellow" }}>
+              {" "}
+              ** Enrolment of Biometric data for the Citizens older than 06
+              (six) years.
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL("https://www.epassport.gov.bd/landing/notices/33")
+            }
+          >
+            <Text style={{ color: "white" }}>
+              {" "}
+              ** List of functional e-Passport Offices
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL(
+                "https://www.epassport.gov.bd/landing/notices/151"
+              )
+            }
+          >
+            <Text style={{ color: "blue" }}>
+              {" "}
+              ** Temporary halt of 64 pages passport booklet delivery
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL("https://www.epassport.gov.bd/landing/notices/34")
+            }
+          >
+            <Text style={{ color: "white" }}>
+              {" "}
+              ** Documents need to be carried while enrolment at Passport
+              offices.
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              Linking.openURL("https://www.epassport.gov.bd/landing/notices/39")
+            }
+          >
+            <Text style={{ color: "black" }}>
+              {" "}
+              ** Guidelines for e-Passport application of government employees
+            </Text>
+          </TouchableOpacity>
+        </MarqueeText>
       </View>
+
       <View
         style={{
           flexDirection: "row",
-          height: 250,
+          height: 700,
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#FFFFFF",
-            flex: 0.3,
-            height: 150,
-            margin: 10,
-            padding: 10,
-          }}
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
           <View
             style={{
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              alignContent: "flex-start",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 100,
+              marginTop: 20,
             }}
           >
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>1</Text>
+            <Text
+              style={{
+                color: "blue",
+                fontWeight: "bold",
+                fontSize: 30,
+              }}
+            >
+              5 Step to Apply Passport
+            </Text>
           </View>
-          <View style={styles.five}>
-            <MaterialCommunityIcons
-              name={"magnify-expand"}
-              size={80}
-              color={"green"}
-            />
-            <Text style={styles.menuText}>Check availability</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#FFFFFF",
-            flex: 0.3,
-            height: 150,
-            margin: 10,
-            padding: 10,
-          }}
-        >
           <View
             style={{
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              alignContent: "flex-start",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>2</Text>
-          </View>
-          <View style={styles.five}>
-            <MaterialCommunityIcons
-              name={"playlist-edit"}
-              size={80}
-              color={"green"}
-            />
-            <Text style={styles.menuText}>e-Passport application </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#FFFFFF",
-            flex: 0.3,
-            height: 150,
-            margin: 10,
-            padding: 10,
-          }}
-        >
-          <View
-            style={{
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              alignContent: "flex-start",
-            }}
-          >
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>3</Text>
-          </View>
-          <View style={styles.five}>
-            <MaterialCommunityIcons
-              name={"cash-check"}
-              size={80}
-              color={"green"}
-            />
-            <Text style={styles.menuText}> Pay passport fees </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#FFFFFF",
-            flex: 0.3,
-            height: 150,
-            margin: 10,
-            padding: 10,
-          }}
-        >
-          <View
-            style={{
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              alignContent: "flex-start",
-            }}
-          >
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>4</Text>
-          </View>
-          <View style={styles.five}>
             <View
               style={{
                 flexDirection: "row",
               }}
             >
-              <MaterialCommunityIcons
-                name={"fingerprint"}
-                size={50}
-                color={"green"}
-              />
-              <MaterialCommunityIcons
-                name={"camera"}
-                size={50}
-                color={"green"}
-              />
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  padding: 10,
+                  margin: 10,
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    alignContent: "flex-start",
+                    width:250
+                  }}
+                >
+                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>1</Text>
+                </View>
+                <View style={styles.five}>
+                  <MaterialCommunityIcons
+                    name={"magnify-expand"}
+                    size={80}
+                    color={"green"}
+                  />
+                  <Text style={styles.menuText}>Check availability</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  padding: 10,
+                  margin: 10,
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    alignContent: "flex-start",
+                    width:250
+                  }}
+                >
+                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>2</Text>
+                </View>
+                <View style={styles.five}>
+                  <MaterialCommunityIcons
+                    name={"playlist-edit"}
+                    size={80}
+                    color={"green"}
+                  />
+                  <Text style={styles.menuText}>e-Passport application </Text>
+                </View>
+              </TouchableOpacity>
+
             </View>
-            <Text style={styles.menuText}>Biometric enrolment</Text>
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
+              <TouchableOpacity
+                onPress={hanldeOnPress}
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  padding: 10,
+                  margin: 10,
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    alignContent: "flex-start",
+                    width:250
+                  }}
+                >
+                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>3</Text>
+                </View>
+                <View style={styles.five}>
+                  <MaterialCommunityIcons
+                    name={"cash-check"}
+                    size={80}
+                    color={"green"}
+                  />
+                  <Text style={styles.menuText}> Pay passport fees </Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+
+            <Modal animationType="fade" transparent={true} visible={open}>
+              <TouchableOpacity
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onPress={hanldeOnPress}
+              >
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Image
+                    style={{ resizeMode: "stretch" }}
+                    source={require("../assets/fees.jpeg")}
+                  />
+                </View>
+              </TouchableOpacity>
+            </Modal>
+
+
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#FFFFFF",
+
+                  margin: 10,
+                  padding: 10,
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    alignContent: "flex-start",
+                    width:250
+                  }}
+                >
+                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>4</Text>
+                </View>
+                <View style={styles.five}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                    }}
+                  >
+                    <MaterialCommunityIcons
+                      name={"fingerprint"}
+                      size={50}
+                      color={"green"}
+                    />
+                    <MaterialCommunityIcons
+                      name={"camera"}
+                      size={50}
+                      color={"green"}
+                    />
+                  </View>
+                  <Text style={styles.menuText}>Biometric enrolment</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  margin: 10,
+                  padding: 10,
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    alignContent: "flex-start",
+                    width:250
+                  }}
+                >
+                  <Text style={{ fontSize: 24, fontWeight: "bold" }}>5</Text>
+                </View>
+                <View style={styles.five}>
+                  <MaterialCommunityIcons
+                    name={"passport-biometric"}
+                    size={80}
+                    color={"green"}
+                  />
+                  <Text style={styles.menuText}>Collect your e-Passport</Text>
+                </View>
+              </TouchableOpacity>
+
+            </View>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            backgroundColor: "#FFFFFF",
-            flex: 0.3,
-            height: 150,
-            margin: 10,
-            padding: 10,
-          }}
+        </View>
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
         >
-          <View
-            style={{
-              justifyContent: "flex-start",
-              alignItems: "flex-start",
-              alignContent: "flex-start",
-            }}
-          >
-            <Text style={{ fontSize: 24, fontWeight: "bold" }}>5</Text>
-          </View>
-          <View style={styles.five}>
-            <MaterialCommunityIcons
-              name={"passport-biometric"}
-              size={80}
-              color={"green"}
-            />
-            <Text style={styles.menuText}>Collect your e-Passport</Text>
-          </View>
-        </TouchableOpacity>
-      </View>
-      {/* <View style={styles.ContentBlock}>
-        <TouchableOpacity style={styles.block}>
-          <MaterialCommunityIcons
-            name={"desktop-mac"}
-            size={100}
-            color={"green"}
+          <Image
+            style={{ resizeMode: "stretch" }}
+            source={require("../assets/video.jpeg")}
           />
-          <Text style={styles.menuText}> Apply Online </Text>
-        </TouchableOpacity>
-      </View> */}
-      <View style={styles.ContentBlock}>
+        </View>
+      </View>
+
+      
+      {/* <View style={styles.ContentBlock}>
         <TouchableOpacity style={styles.FeesBlock}>
           <Text style={styles.menuText}> Fees for RPO </Text>
         </TouchableOpacity>
@@ -444,9 +531,9 @@ function HomePage({ navigation }) {
           <Text> 10 Year / 48 Page : 3400 Taka </Text>
           <Text> 10 Year / 64 Page : 3400 Taka </Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
       <View
-        style={{ justifyContent: "center", alignItems: "center", height: 100 }}
+        style={{ justifyContent: "center", height: 100, padding:50 }}
       >
         <Text
           style={{
@@ -463,25 +550,28 @@ function HomePage({ navigation }) {
         style={{
           flexDirection: "row",
           justifyContent: "space-around",
+          alignItems: "center",
         }}
       >
         {" "}
-        <TouchableOpacity style={styles.five} onPress={() => navigation.navigate("Application")}>
+        <TouchableOpacity
+          style={styles.categoryBlock}
+          onPress={() => navigation.navigate("Application")}
+        >
           <MaterialCommunityIcons name={"book"} size={80} color={"red"} />
-          <Text style={styles.menuText}>Red or Deplomatic </Text>
+          <Text style={styles.menuText}>Red / Deplomatic </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.five}>
+        <TouchableOpacity style={styles.categoryBlock}>
           <MaterialCommunityIcons name={"book"} size={80} color={"green"} />
-          <Text style={styles.menuText}>Green or Ordinary </Text>
+          <Text style={styles.menuText}>Green / Ordinary </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.five}>
+        <TouchableOpacity style={styles.categoryBlock}>
           <MaterialCommunityIcons name={"book"} size={80} color={"blue"} />
-          <Text style={styles.menuText}>Blue Or Government Official </Text>
+          <Text style={styles.menuText}> Blue / Government </Text>
         </TouchableOpacity>
-      </View>
-      <View
+        <View
         style={{
-          flexDirection: "row",
+          flexDirection: "column",
           justifyContent: "space-evenly",
           height: 300,
         }}
@@ -529,10 +619,9 @@ function HomePage({ navigation }) {
           </Text>
         </View>
       </View>
-      <MarqueeText>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry and typesetting industry.
-      </MarqueeText>
+      </View>
+      
+      
       <Footer />
     </ScrollView>
   );
@@ -541,7 +630,7 @@ const styles = StyleSheet.create({
   ContentBlock: {
     flexDirection: "row",
     flex: 1,
-    padding: 20,
+    padding: 50,
     justifyContent: "center",
     alignItems: "center",
     height: 200,
@@ -578,15 +667,22 @@ const styles = StyleSheet.create({
   },
   five: {
     backgroundColor: "#FFFFFF",
-    flex: 0.3,
-    height: 150,
-    margin: 10,
-    padding: 10,
+
     flexDirection: "column",
     borderColor: "black",
     // borderWidth: 5,
     alignItems: "center",
     justifyContent: "center",
+  },
+  categoryBlock:{
+    backgroundColor: "#FFFFFF",
+    flexDirection: "column",
+    borderColor: "black",
+    height:200,
+    width:250,
+    alignItems: "center",
+    justifyContent: "center",
+
   },
   blockHead: {
     flexDirection: "column",
@@ -597,6 +693,7 @@ const styles = StyleSheet.create({
     color: "blue",
     fontWeight: "bold",
     fontSize: 20,
+    alignContent:'center'
   },
   container: {
     flex: 1,
@@ -606,3 +703,6 @@ const styles = StyleSheet.create({
 });
 
 export default HomePage;
+
+// npm install --legacy-peer-deps
+// for node and module

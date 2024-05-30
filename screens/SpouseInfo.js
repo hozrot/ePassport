@@ -22,7 +22,7 @@ const status = [
 ];
 
 function SpouseInfo({ navigation,route }) {
-  const yearofage = route.params;
+  const {yearofage,selectedId} = route.params;
 
   const [statusId, setStatusId] = useState(null);
   const [statusFocus, setstatusFocus] = useState(false);
@@ -175,7 +175,7 @@ function SpouseInfo({ navigation,route }) {
          <Text>{yearofage}</Text> */}
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("EmergencyContact",{yearofage,statusId})}
+            onPress={() => navigation.navigate("EmergencyContact",{yearofage,statusId,selectedId})}
           />
           
          

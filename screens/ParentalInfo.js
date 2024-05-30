@@ -15,7 +15,7 @@ import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 function ParentalInfo({ navigation,route }) {
-  const yearofage = route.params;
+  const {yearofage,selectedId} = route.params;
   return (
     <ScrollView>
       <Header />
@@ -259,7 +259,7 @@ function ParentalInfo({ navigation,route }) {
           
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("SpouseInfo",yearofage)}
+            onPress={() => navigation.navigate("SpouseInfo",{yearofage,selectedId})}
           />
           <Text>{yearofage}</Text>
         </View>

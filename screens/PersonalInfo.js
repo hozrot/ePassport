@@ -16,7 +16,7 @@ import Button from "../component/Button";
 import MenuBar from "../component/MenuBar";
 import SideMenu from "../component/SideMenu";
 // import { Tooltip } from "@ui-kitten/components";
-import { IconButton, Tooltip } from "react-native-paper";
+//import { IconButton, Tooltip } from "react-native-paper";
 const job = [
   { label: "Government Job", value: "1" },
   { label: "Private Job", value: "2" },

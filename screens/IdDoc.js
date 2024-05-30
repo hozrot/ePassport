@@ -304,7 +304,7 @@ function IdDoc({ navigation,route }) {
           </View>
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("ParentalInfo",yearofage)}
+            onPress={() => navigation.navigate("ParentalInfo",{yearofage,selectedId})}
           />
   <Text>{yearofage}</Text>
         </View>

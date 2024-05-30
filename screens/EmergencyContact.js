@@ -23,7 +23,7 @@ const relationship = [
 
 
 function EmergencyContact({ navigation,route }) {
-  const {yearofage,statusId} = route.params;
+  const {yearofage,statusId,selectedId} = route.params;
   
   
   const [value2, setValue2] = useState(null);
@@ -226,7 +226,7 @@ function EmergencyContact({ navigation,route }) {
          
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("PassportOption",{yearofage,statusId})}
+            onPress={() => navigation.navigate("PassportOption",{yearofage,statusId,selectedId})}
           />
           <Text>{yearofage}</Text>
         </View>
