@@ -14,17 +14,17 @@ import { Dropdown } from 'react-native-element-dropdown';
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 
-
 const relationship = [
   { relationship: 'Father', value2: '1' },
   { relationship: 'Uncle', value2: '2' },
   { relationship: 'Legal Guardian', value2: '3' },
 
-
 ];
 
 
-function EmergencyContact({ navigation }) {
+function EmergencyContact({ navigation,route }) {
+  const {yearofage,statusId,selectedId} = route.params;
+  
   
   const [value2, setValue2] = useState(null);
   const [isFocus2, setIsFocus2] = useState(false);
@@ -100,7 +100,7 @@ function EmergencyContact({ navigation }) {
           
           
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>Emergency Contact relationship</Text>
+          <Text style={styles.InputTitle}>Emergency Contact relationship (ব্যাক্তির সাথে সম্পর্ক)</Text>
           <Dropdown
                 style={[styles.dropdown, isFocus2 && { borderColor: 'blue' }]}
                 placeholderStyle={styles.placeholderStyle}
@@ -127,7 +127,7 @@ function EmergencyContact({ navigation }) {
             }} >
             </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Name (as per NID )</Text>
+          <Text style={styles.InputTitle}> Name (as per NID )(নাম )</Text>
             <TextInput
               placeholder="Enter  name"
               autoCapitalize="none"
@@ -137,7 +137,7 @@ function EmergencyContact({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Select Country </Text>
+          <Text style={styles.InputTitle}> Select Country (দেশ)</Text>
             <TextInput
               placeholder="Enter  Country  name"
               autoCapitalize="none"
@@ -147,7 +147,7 @@ function EmergencyContact({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}> Select District </Text>
+          <Text style={styles.InputTitle}> Select District(জেলা) </Text>
             <TextInput
               placeholder="Enter  District  name"
               autoCapitalize="none"
@@ -157,7 +157,7 @@ function EmergencyContact({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-          <Text style={styles.InputTitle}>City / Village / House  </Text>
+          <Text style={styles.InputTitle}>City / Village / House(শহর/গ্রাম/বাড়ি)  </Text>
             <TextInput
               placeholder="Enter  City / Village / House name"
               autoCapitalize="none"
@@ -167,7 +167,7 @@ function EmergencyContact({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Select Post Office   </Text>
+            <Text style={styles.InputTitle}>Select Post Office  (পোস্ট অফিস) </Text>
             <TextInput
               placeholder="Enter   Post Office"
               autoCapitalize="none"
@@ -176,7 +176,7 @@ function EmergencyContact({ navigation }) {
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Select Post Code   </Text>
+            <Text style={styles.InputTitle}>Select Post Code  (পোস্ট কোড) </Text>
             <TextInput
               placeholder="Enter   Post Code"
               autoCapitalize="none"
@@ -185,7 +185,7 @@ function EmergencyContact({ navigation }) {
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Select Police Station   </Text>
+            <Text style={styles.InputTitle}>Select Police Station (পুলিশ স্টেশন)   </Text>
             <TextInput
               placeholder="Enter  Police Station"
               autoCapitalize="none"
@@ -194,7 +194,7 @@ function EmergencyContact({ navigation }) {
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Email address   </Text>
+            <Text style={styles.InputTitle}>Email address (ইমেইল)  </Text>
             <TextInput
               placeholder="Enter Email address "
               autoCapitalize="none"
@@ -203,7 +203,7 @@ function EmergencyContact({ navigation }) {
             />
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Country Code    </Text>
+            <Text style={styles.InputTitle}>Country Code  (দেশের কোড)  </Text>
             <TextInput
               placeholder="EnterCountry Code "
               autoCapitalize="none"
@@ -212,7 +212,7 @@ function EmergencyContact({ navigation }) {
             /> 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}>Contact Number   </Text>
+            <Text style={styles.InputTitle}>Contact Number (মোবাইল নং)  </Text>
             <TextInput
               placeholder="Enter mobile no  "
               autoCapitalize="none"
@@ -221,14 +221,14 @@ function EmergencyContact({ navigation }) {
             />
           </View>
           
-         
+          <Text>status: {statusId}</Text>
          
          
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("PassportOption")}
+            onPress={() => navigation.navigate("PassportOption",{yearofage,statusId,selectedId})}
           />
-
+          <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
   },
-  LogIn: {
+  LogIn: { 
     flex: 0.2,
     backgroundColor: "gray",
   },

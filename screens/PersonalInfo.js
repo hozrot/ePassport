@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRoute } from "react";
 import {
   View,
   StyleSheet,
@@ -16,7 +16,7 @@ import Button from "../component/Button";
 import MenuBar from "../component/MenuBar";
 import SideMenu from "../component/SideMenu";
 // import { Tooltip } from "@ui-kitten/components";
-import { IconButton, Tooltip } from "react-native-paper";
+//import { IconButton, Tooltip } from "react-native-paper";
 const job = [
   { label: "Government Job", value: "1" },
   { label: "Private Job", value: "2" },
@@ -49,7 +49,8 @@ const year = [
   { year: "1985", yearId: "7" },
 ];
 
-export default function PersonalInfo({ navigation }) {
+export default function PersonalInfo({ navigation, route }) {
+  const {PassportType,selectedDoc,selectedPayment} = route.params;
   const [date, setDate] = useState(null);
   const [month, setMonth] = useState(null);
 
@@ -70,6 +71,8 @@ export default function PersonalInfo({ navigation }) {
   return (
     <ScrollView>
       <Header />
+      <Text> option: {selectedPayment}</Text>
+      <Text> option2: {selectedDoc}</Text>
       <MenuBar />
       <View
         style={{
@@ -85,7 +88,7 @@ export default function PersonalInfo({ navigation }) {
           }}
         >
           {" "}
-          Please fill in all required information step by step{" "}
+          Please fill in all required information step by step {PassportType}
         </Text>
       </View>
 
@@ -230,7 +233,7 @@ export default function PersonalInfo({ navigation }) {
             >
               Full Name (সম্পুর্ণ নাম){" "}
             </Text>
-           
+
             <TextInput
               placeholder="Enter your Full name"
               autoCapitalize="none"
@@ -531,6 +534,15 @@ export default function PersonalInfo({ navigation }) {
               >
                 Select Date of Birth (জন্মতারিখ ){" "}
               </Text>
+              {/* <label for="start">DOB</label>
+
+              <input
+                type="date"
+                id="start"
+                name="trip-start"
+                min="1900-01-01"
+                max="2024-12-31"
+              /> */}
               <View
                 style={{
                   justifyContent: "space-between",
@@ -718,9 +730,10 @@ export default function PersonalInfo({ navigation }) {
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("AddressInfo")}
+            onPress={() => navigation.navigate("AddressInfo",yearId)}
           />
         </View>
+        <Text>test data: {yearId}</Text>
       </View>
 
       <Footer />

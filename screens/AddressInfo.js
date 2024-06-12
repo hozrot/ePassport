@@ -15,7 +15,9 @@ import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 import MenuBar from "../component/MenuBar";
-export default function AddressInfo({ navigation }) {
+export default function AddressInfo({ navigation,route }) {
+
+  const yearofage = route.params;
   return (
     <ScrollView>
       <Header />
@@ -281,8 +283,9 @@ export default function AddressInfo({ navigation }) {
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("IdDoc")}
+            onPress={() => navigation.navigate("IdDoc",yearofage)}
           />
+          <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />

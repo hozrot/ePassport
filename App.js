@@ -16,6 +16,7 @@ import EmergencyContact from "./screens/EmergencyContact";
 import PassportOption from "./screens/PassportOption";
 import DelevaryOption from "./screens/DelevaryOption";
 import ApplicationSummary from "./screens/ApplicationSummary";
+import StatusCheck from "./screens/StatusCheck";
 
 const Stack = createNativeStackNavigator();
 
@@ -37,6 +38,7 @@ export default function App() {
         <Stack.Screen name="PassportOption" component={PassportOption} />
         <Stack.Screen name="DelevaryOption" component={DelevaryOption} />
         <Stack.Screen name="ApplicationSummary" component={ApplicationSummary} />
+        <Stack.Screen name="StatusCheck" component={StatusCheck} />
         
       </Stack.Navigator>
     </NavigationContainer>

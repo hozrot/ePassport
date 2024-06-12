@@ -171,18 +171,15 @@ function ApplicationPage({ navigation }) {
                 <TouchableOpacity onPress={hanldeOnPress}>
                         <Text>Open </Text>
                     </TouchableOpacity>
-                    <Modal animationType='slide'
+                    <Modal animationType='fade'
                         transparent={true}
                         visible={open}>
 
 
-                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                        <TouchableOpacity style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} onPress={hanldeOnPress} >
                             <View style={{ alignItems: 'center', backgroundColor: 'yellow', width: '40%', height: '50%', elevation: .5 }}> <Text> This a Modal data </Text>
-                                <TouchableOpacity onPress={hanldeOnPress}>
-                                    <Text>Close </Text>
-                                </TouchableOpacity>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     </Modal>
 
                     <Button

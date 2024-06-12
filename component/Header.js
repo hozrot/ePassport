@@ -20,6 +20,11 @@ function Header(props) {
           {"\t"}Government of the {"\n"} {"\t"}People's Republic of Bangladesh
         </Text>
       </View>
+      <View>
+      <Text style={{ color: "white", fontWeight: "bold", fontSize: 18 }}>
+      Welcome to Bangladesh e-Passport Protal
+        </Text>
+      </View>
       <View style={styles.HeaderRight}>
         <Text style={{ color: "white", fontWeight: "bold", fontSize: 15 }}>
           Depertment of {"\n"}Immigration and Passport{" "}

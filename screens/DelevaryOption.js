@@ -15,7 +15,8 @@ import Banner from "../component/Banner";
 import TextInput from "../component/TextInput";
 import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
-function DelevaryOption({ navigation }) {
+function DelevaryOption({ navigation,route }) {
+  const {yearofage,statusId,selectedId} = route.params;
   const radioButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -28,6 +29,7 @@ function DelevaryOption({ navigation }) {
     {
       id: '3',
       label: 'Super Express (Within 2 Working day)',
+      disabled: 'true'
     }
   ]), []);
   const paymentButtons = useMemo(() => ([
@@ -41,7 +43,7 @@ function DelevaryOption({ navigation }) {
     },
   ]), []);
 
-  const [selectedId, setSelectedId] = useState();
+  const [typeId, setTypeId] = useState();
   const [selectePayment, setSelectePayment] = useState();
   return (
     <ScrollView>
@@ -112,19 +114,22 @@ function DelevaryOption({ navigation }) {
             Delivary Option
           </Text>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}> Delivary Type  </Text>
+            <Text style={styles.InputTitle}> Delivary Type (সরবরাহের ধরণ) </Text>
             <RadioGroup
               radioButtons={radioButtons}
-              onPress={setSelectedId}
-              selectedId={selectedId}
+              onPress={setTypeId}
+              selectedId={typeId}
               containerStyle={[styles.radio]}
               layout="row"
 
             />
 
+            
           </View>
-
-          {selectedId == 1 && <Text
+          {selectedId==1 &&  <Text style={styles.InputTitle}>As you have a previous MRP passport, You are eligible to get the Express Delivary OPtion </Text>}
+            {selectedId==2 &&  <Text style={styles.InputTitle}>As you have a previous ePP passport, You are eligible to get the Express Delivary OPtion </Text>}
+            {selectedId==3 &&  <Text style={styles.InputTitle}>As you have no  previous MRP or epp passport, You are not eligible to get the Express Delivary OPtion </Text>}
+          {typeId == 1 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -135,7 +140,7 @@ function DelevaryOption({ navigation }) {
             Passport Price : 5,750 Taka
           </Text>
           }
-          {selectedId == 2 && <Text
+          {typeId == 2 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -146,7 +151,7 @@ function DelevaryOption({ navigation }) {
             Passport Price : 8,050 Taka
           </Text>
           }
-          {selectedId == 3 && <Text
+          {typeId == 3 && <Text
             style={{
               color: "#223e4b",
               fontSize: 30,
@@ -158,28 +163,28 @@ function DelevaryOption({ navigation }) {
           </Text>
           }
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}> Payment Method </Text>
+            <Text style={styles.InputTitle}> Payment Method (ফি পরিশোধের মাধ্যম) </Text>
             <RadioGroup
               radioButtons={paymentButtons}
               onPress={setSelectePayment}
               selectedId={selectePayment}
               layout='row'
-
             />
           </View>
-
+         
+         
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("ApplicationSummary")}
+            onPress={() => navigation.navigate("ApplicationSummary",{yearofage,statusId})}
           />
 
         </View>
       </View>
-      <Footer />
+      <Footer/>
     </ScrollView>
   );
 }
-
+ 
 const styles = StyleSheet.create({
   Container: {
     height: 400,

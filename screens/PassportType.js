@@ -59,7 +59,7 @@ export default function PassportType({ navigation }) {
       value: 'no'
     }
   ]), []);
-
+  const [passportType, setPassportType] = useState();
   const [selectedId, setSelectedId] = useState();
   const [selectedDoc, setSelectedDoc] = useState();
   const [selectedPayment, setSelectedPayment] = useState();
@@ -163,47 +163,46 @@ export default function PassportType({ navigation }) {
             paddingBottom: 10
           }}> Select the Passport Type for your application!</Text>
 
-          <RadioGroup
-            radioButtons={radioButtons}
-            onPress={setSelectedId}
-            selectedId={selectedId}
-            layout='row'
+              <RadioGroup
+                radioButtons={radioButtons}
+                onPress={setSelectedId}
+                selectedId={selectedId}
+                layout='row'
+                selected
+              />
 
-          />
-
-          {selectedId == 1 && <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 10
-          }}> ** Provide NOC/ Student Id / Tread Licence According to your profession  </Text>}
-          {selectedId == 2 && <View> <Text style={{
-            fontWeight: "bold",
-            paddingBottom: 10,
-            paddingTop: 10
-          }}> Select Available Suporting Document  </Text> <RadioGroup
-              radioButtons={supportingDoc}
-              onPress={setSelectedDoc}
-              selectedId={selectedDoc}
-              layout='row'
-              selected
+            {selectedId == 1 && <Text style={{
+                fontWeight: "bold",
+                paddingBottom:10,
+                paddingTop:10
+              }}> ** Provide NOC/ Student Id / Tread Licence According to your profession  </Text>}
+            {selectedId == 2 &&<View> <Text style={{
+                fontWeight: "bold",
+                paddingBottom:10,
+                paddingTop:10
+              }}> Select Available Suporting Document  </Text> <RadioGroup
+                radioButtons={supportingDoc}
+                onPress={setSelectedDoc}
+                selectedId={selectedDoc}
+                layout='row'
+                selected
+              />
+              <Text style={{
+                fontWeight: "bold",
+                paddingBottom:10,
+                paddingTop:10
+              }}>Is a Payment required for the Official Passport   </Text>
+              <RadioGroup
+                radioButtons={payment}
+                onPress={setSelectedPayment}
+                selectedId={selectedPayment}
+                layout='row'
+                selected
+              /></View>}
+            <Button
+              label="Save and Continue"
+              onPress={() => navigation.navigate("PersonalInfo")}
             />
-            <Text style={{
-              fontWeight: "bold",
-              paddingBottom: 10,
-              paddingTop: 10
-            }}>Is a Payment required for the Official Passport   </Text>
-            <RadioGroup
-              radioButtons={payment}
-              onPress={setSelectedPayment}
-              selectedId={selectedPayment}
-              layout='row'
-
-            /></View>}
-          <Text> { }</Text>
-          <Button
-            label="Save and Continue"
-            onPress={() => navigation.navigate("PersonalInfo")}
-          />
 
         </View>
 

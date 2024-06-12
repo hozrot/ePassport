@@ -17,7 +17,9 @@ import Button from "../component/Button";
 import { Entypo as Icon } from "@expo/vector-icons";
 import { RadioButton } from "react-native-ui-lib";
 
-export default function PassportOption({ navigation }) {
+export default function PassportOption({ navigation, route }) {
+  
+  const {yearofage,statusId,selectedId} = route.params;
   const pageButtons = useMemo(() => ([
     {
       id: '1', // acts as primary key, should be unique and non-empty string
@@ -111,7 +113,7 @@ export default function PassportOption({ navigation }) {
             Passport Option
           </Text>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}> Passport Page </Text>
+            <Text style={styles.InputTitle}> Passport Page (পেজ সংখ্যা) </Text>
             <RadioGroup
               radioButtons={pageButtons}
               onPress={setPageId}
@@ -128,7 +130,7 @@ export default function PassportOption({ navigation }) {
 
           </View>
           <View style={styles.InputView}>
-            <Text style={styles.InputTitle}> Validity </Text>
+            <Text style={styles.InputTitle}> Validity (মেয়াদ) </Text>
             <RadioGroup
               radioButtons={validityButtons}
               onPress={setValidityId}
@@ -158,13 +160,13 @@ export default function PassportOption({ navigation }) {
           >
             Passport Price :  5,750 Taka
           </Text>}
-
+          <Text>{statusId}</Text>
 
           <Button
             label="Save and Continue"
-            onPress={() => navigation.navigate("DelevaryOption")}
+            onPress={() => navigation.navigate("DelevaryOption",{yearofage,statusId,selectedId})}
           />
-
+  <Text>{yearofage}</Text>
         </View>
       </View>
       <Footer />
@@ -174,7 +176,7 @@ export default function PassportOption({ navigation }) {
 
 const styles = StyleSheet.create({
   Container: {
-    height: 400,
+    height: 400, 
     justifyContent: "flex-start",
     alignItems: "center",
   },
