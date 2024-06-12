@@ -49,7 +49,7 @@ export default function PassportType({ navigation }) {
   ]), []);
   const payment = useMemo(() => ([
     {
-      id: '1', // acts as primary key, should be unique and non-empty string
+      id: 'yes', // acts as primary key, should be unique and non-empty string
       label: 'Yes',
       value: 'yes '
     },
@@ -98,7 +98,7 @@ export default function PassportType({ navigation }) {
         <TouchableOpacity>
           <Text style={styles.menuText}>Contact </Text>
         </TouchableOpacity>
-       
+
       </View>
       <View style={{
         paddingLeft: 200
@@ -117,7 +117,7 @@ export default function PassportType({ navigation }) {
         paddingLeft: 200
       }}>
         <View style={styles.sideBlock}>
-          <TouchableOpacity style={{ backgroundColor:'gray',}}>
+          <TouchableOpacity style={{ backgroundColor: 'gray', }}>
             <Text style={styles.sidemenu}>Passport Type </Text>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -148,61 +148,62 @@ export default function PassportType({ navigation }) {
         <View style={{
           width: "80%",
         }}>
-            <Text
-              style={{
-                color: "#223e4b",
-                fontSize: 30,
-                fontWeight: "bold",
-                padding:20
-              }}
-            >
-              Passport Type
-            </Text>
-           <Text style={{
-                fontWeight: "bold",
-                paddingBottom:10
-              }}> Select the Passport Type for your application!</Text>
+          <Text
+            style={{
+              color: "#223e4b",
+              fontSize: 30,
+              fontWeight: "bold",
+              padding: 20
+            }}
+          >
+            Passport Type
+          </Text>
+          <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10
+          }}> Select the Passport Type for your application!</Text>
 
-              <RadioGroup
-                radioButtons={radioButtons}
-                onPress={setSelectedId}
-                selectedId={selectedId}
-                layout='row'
-                selected
-              />
+          <RadioGroup
+            radioButtons={radioButtons}
+            onPress={setSelectedId}
+            selectedId={selectedId}
+            layout='row'
 
-            {selectedId == 1 && <Text style={{
-                fontWeight: "bold",
-                paddingBottom:10,
-                paddingTop:10
-              }}> ** Provide NOC/ Student Id / Tread Licence According to your profession  </Text>}
-            {selectedId == 2 &&<View> <Text style={{
-                fontWeight: "bold",
-                paddingBottom:10,
-                paddingTop:10
-              }}> Select Available Suporting Document  </Text> <RadioGroup
-                radioButtons={supportingDoc}
-                onPress={setSelectedDoc}
-                selectedId={selectedDoc}
-                layout='row'
-                selected
-              />
-              <Text style={{
-                fontWeight: "bold",
-                paddingBottom:10,
-                paddingTop:10
-              }}>Is a Payment required for the Official Passport   </Text>
-              <RadioGroup
-                radioButtons={payment}
-                onPress={setSelectedPayment}
-                selectedId={selectedPayment}
-                layout='row'
-                selected
-              /></View>}
-            <Button
-              label="Save and Continue"
-              onPress={() => navigation.navigate("PersonalInfo")}
+          />
+
+          {selectedId == 1 && <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            paddingTop: 10
+          }}> ** Provide NOC/ Student Id / Tread Licence According to your profession  </Text>}
+          {selectedId == 2 && <View> <Text style={{
+            fontWeight: "bold",
+            paddingBottom: 10,
+            paddingTop: 10
+          }}> Select Available Suporting Document  </Text> <RadioGroup
+              radioButtons={supportingDoc}
+              onPress={setSelectedDoc}
+              selectedId={selectedDoc}
+              layout='row'
+              selected
             />
+            <Text style={{
+              fontWeight: "bold",
+              paddingBottom: 10,
+              paddingTop: 10
+            }}>Is a Payment required for the Official Passport   </Text>
+            <RadioGroup
+              radioButtons={payment}
+              onPress={setSelectedPayment}
+              selectedId={selectedPayment}
+              layout='row'
+
+            /></View>}
+          <Text> { }</Text>
+          <Button
+            label="Save and Continue"
+            onPress={() => navigation.navigate("PersonalInfo")}
+          />
 
         </View>
 
@@ -225,7 +226,7 @@ const styles = StyleSheet.create({
     flex: 0.2,
     backgroundColor: "gray",
   },
-  sideBlock:{
+  sideBlock: {
     width: "20%",
     flexDirection: 'column',
     paddingLeft: 50
